@@ -1,195 +1,170 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Source Files\Model">
-      <UniqueIdentifier>{1eef36c3-821c-4634-866d-145db9ccddd3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Model\Item">
-      <UniqueIdentifier>{cd6d70f8-f01c-4a12-b153-8fb2efbd68e4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Model\Chamber">
-      <UniqueIdentifier>{6687ac99-0932-41ed-aab4-47c4082ac866}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Controllers">
-      <UniqueIdentifier>{70788d9d-d184-468a-80cb-70584da7be5e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\View">
-      <UniqueIdentifier>{c07b5e43-5916-4e39-8ed0-6f19770427df}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Model">
-      <UniqueIdentifier>{310835bd-cab3-425d-8029-14b601b2505b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Model\Chamber">
-      <UniqueIdentifier>{dfe89269-11fb-4c6c-ab03-054cc592d572}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Model\Item">
-      <UniqueIdentifier>{74b1e01a-06f1-41d3-9e8f-f8a02eb805c6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Model\Unit">
-      <UniqueIdentifier>{f87975f6-2911-4505-b8d9-afbee4f04f26}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Model\Unit">
-      <UniqueIdentifier>{f7336243-9666-4a31-8950-7720dae9f740}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Model\Traps">
-      <UniqueIdentifier>{37cc9b72-2308-4cb2-a001-8bb20eb5ec77}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Model\Traps">
-      <UniqueIdentifier>{03c2cfb0-5dd1-4951-abcd-227ded7c1f23}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Controllers">
-      <UniqueIdentifier>{e8524292-2cf2-4078-a344-00b57c309644}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\View">
-      <UniqueIdentifier>{53c8c0f1-3443-4a1e-ac00-11b8f6d69a17}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Model\Factories">
-      <UniqueIdentifier>{2243f11e-8188-4445-9599-d81902336e19}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Model\Factories">
-      <UniqueIdentifier>{140f1b6f-8090-4a45-9d71-5d12dae0f79e}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="stdafx.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="targetver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BossChamber.h">
-      <Filter>Header Files\Model\Chamber</Filter>
-    </ClInclude>
-    <ClInclude Include="Chamber.h">
-      <Filter>Header Files\Model\Chamber</Filter>
-    </ClInclude>
-    <ClInclude Include="Start.h">
-      <Filter>Header Files\Model\Chamber</Filter>
-    </ClInclude>
-    <ClInclude Include="Stair.h">
-      <Filter>Header Files\Model\Chamber</Filter>
-    </ClInclude>
-    <ClInclude Include="Item.h">
-      <Filter>Header Files\Model\Item</Filter>
-    </ClInclude>
-    <ClInclude Include="Potion.h">
-      <Filter>Header Files\Model\Item</Filter>
-    </ClInclude>
-    <ClInclude Include="Weapon.h">
-      <Filter>Header Files\Model\Item</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>Header Files\Model\Unit</Filter>
-    </ClInclude>
-    <ClInclude Include="Hero.h">
-      <Filter>Header Files\Model\Unit</Filter>
-    </ClInclude>
-    <ClInclude Include="Unit.h">
-      <Filter>Header Files\Model\Unit</Filter>
-    </ClInclude>
-    <ClInclude Include="Dungeon.h">
-      <Filter>Header Files\Model</Filter>
-    </ClInclude>
-    <ClInclude Include="Level.h">
-      <Filter>Header Files\Model</Filter>
-    </ClInclude>
-    <ClInclude Include="Trap.h">
-      <Filter>Header Files\Model\Traps</Filter>
-    </ClInclude>
-    <ClInclude Include="SpikeTrap.h">
-      <Filter>Header Files\Model\Traps</Filter>
-    </ClInclude>
-    <ClInclude Include="MainController.h">
-      <Filter>Header Files\Controllers</Filter>
-    </ClInclude>
-    <ClInclude Include="MainView.h">
-      <Filter>Header Files\View</Filter>
-    </ClInclude>
-    <ClInclude Include="Direction.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ChamberFactory.h">
-      <Filter>Header Files\Model\Factories</Filter>
-    </ClInclude>
-    <ClInclude Include="Array3D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
+    <ClCompile Include="Array3D.cpp">
+      <Filter>classes\model</Filter>
+    </ClCompile>
     <ClCompile Include="DungCrawler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BossChamber.cpp">
-      <Filter>Source Files\Model\Chamber</Filter>
-    </ClCompile>
-    <ClCompile Include="Chamber.cpp">
-      <Filter>Source Files\Model\Chamber</Filter>
-    </ClCompile>
-    <ClCompile Include="Stair.cpp">
-      <Filter>Source Files\Model\Chamber</Filter>
-    </ClCompile>
-    <ClCompile Include="Start.cpp">
-      <Filter>Source Files\Model\Chamber</Filter>
-    </ClCompile>
-    <ClCompile Include="Item.cpp">
-      <Filter>Source Files\Model\Item</Filter>
-    </ClCompile>
-    <ClCompile Include="Weapon.cpp">
-      <Filter>Source Files\Model\Item</Filter>
-    </ClCompile>
-    <ClCompile Include="Potion.cpp">
-      <Filter>Source Files\Model\Item</Filter>
+      <Filter>classes\model</Filter>
     </ClCompile>
     <ClCompile Include="Dungeon.cpp">
-      <Filter>Source Files\Model</Filter>
+      <Filter>classes\model</Filter>
     </ClCompile>
-    <ClCompile Include="Level.cpp">
-      <Filter>Source Files\Model</Filter>
-    </ClCompile>
-    <ClCompile Include="MainController.cpp">
-      <Filter>Source Files\Controllers</Filter>
-    </ClCompile>
-    <ClCompile Include="MainView.cpp">
-      <Filter>Source Files\View</Filter>
-    </ClCompile>
-    <ClCompile Include="Hero.cpp">
-      <Filter>Source Files\Model\Unit</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>Source Files\Model\Unit</Filter>
-    </ClCompile>
-    <ClCompile Include="Unit.cpp">
-      <Filter>Source Files\Model\Unit</Filter>
-    </ClCompile>
-    <ClCompile Include="Trap.cpp">
-      <Filter>Source Files\Model\Traps</Filter>
-    </ClCompile>
-    <ClCompile Include="SpikeTrap.cpp">
-      <Filter>Source Files\Model\Traps</Filter>
+    <ClCompile Include="Chamber.cpp">
+      <Filter>classes\model\chamber</Filter>
     </ClCompile>
     <ClCompile Include="ChamberFactory.cpp">
-      <Filter>Source Files\Model\Factories</Filter>
+      <Filter>classes\model\chamber</Filter>
     </ClCompile>
-<<<<<<< HEAD
-=======
-    <ClCompile Include="Array3D.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="BossChamber.cpp">
+      <Filter>classes\model\chamber</Filter>
     </ClCompile>
->>>>>>> origin/master
+    <ClCompile Include="Stair.cpp">
+      <Filter>classes\model\chamber</Filter>
+    </ClCompile>
+    <ClCompile Include="Unit.cpp">
+      <Filter>classes\model\unit</Filter>
+    </ClCompile>
+    <ClCompile Include="Hero.cpp">
+      <Filter>classes\model\unit</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>classes\model\unit</Filter>
+    </ClCompile>
+    <ClCompile Include="SpikeTrap.cpp">
+      <Filter>classes\model\traps</Filter>
+    </ClCompile>
+    <ClCompile Include="Trap.cpp">
+      <Filter>classes\model\traps</Filter>
+    </ClCompile>
+    <ClCompile Include="Potion.cpp">
+      <Filter>classes\model\items</Filter>
+    </ClCompile>
+    <ClCompile Include="Weapon.cpp">
+      <Filter>classes\model\items</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>classes\model\items</Filter>
+    </ClCompile>
+    <ClCompile Include="MainView.cpp">
+      <Filter>classes</Filter>
+    </ClCompile>
+    <ClCompile Include="MainController.cpp">
+      <Filter>classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Start.cpp">
+      <Filter>classes\model\chamber</Filter>
+    </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>classes\model\chamber</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MainView.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MainController.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="BossChamber.h">
+      <Filter>headers\model\chamber</Filter>
+    </ClInclude>
+    <ClInclude Include="Chamber.h">
+      <Filter>headers\model\chamber</Filter>
+    </ClInclude>
+    <ClInclude Include="ChamberFactory.h">
+      <Filter>headers\model\chamber</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>headers\model\unit</Filter>
+    </ClInclude>
+    <ClInclude Include="Hero.h">
+      <Filter>headers\model\unit</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>headers\model\items</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>headers\model\chamber</Filter>
+    </ClInclude>
+    <ClInclude Include="Potion.h">
+      <Filter>headers\model\items</Filter>
+    </ClInclude>
+    <ClInclude Include="SpikeTrap.h">
+      <Filter>headers\model\traps</Filter>
+    </ClInclude>
+    <ClInclude Include="Stair.h">
+      <Filter>headers\model\chamber</Filter>
+    </ClInclude>
+    <ClInclude Include="Start.h">
+      <Filter>headers\model\chamber</Filter>
+    </ClInclude>
+    <ClInclude Include="Trap.h">
+      <Filter>headers\model\traps</Filter>
+    </ClInclude>
+    <ClInclude Include="Unit.h">
+      <Filter>headers\model\unit</Filter>
+    </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>headers\model\items</Filter>
+    </ClInclude>
+    <ClInclude Include="Dungeon.h">
+      <Filter>headers\model</Filter>
+    </ClInclude>
+    <ClInclude Include="Array3D.h">
+      <Filter>headers\model</Filter>
+    </ClInclude>
+    <ClInclude Include="Direction.h">
+      <Filter>headers\model</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="headers">
+      <UniqueIdentifier>{0427224f-200c-44f6-8658-d980baa6841e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="classes">
+      <UniqueIdentifier>{7c6c3993-d0b2-4087-beb7-4a04a06b2296}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="classes\model">
+      <UniqueIdentifier>{c9f36d87-124f-4d49-830a-a485eb6d94d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="classes\model\chamber">
+      <UniqueIdentifier>{d44d0eb2-6b85-40be-95f2-52ce57489358}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="classes\model\unit">
+      <UniqueIdentifier>{2c66cbb6-54e5-4aa3-9014-dd4fe41020a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="classes\model\traps">
+      <UniqueIdentifier>{6aa88f28-0001-46f3-9440-00f21da3ba66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="classes\model\items">
+      <UniqueIdentifier>{eea6ea5c-18db-4fe2-9a0c-40fdbb25644f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers\model">
+      <UniqueIdentifier>{56565152-b5df-4056-a84c-fa0551252bd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers\model\chamber">
+      <UniqueIdentifier>{cf025a86-5146-4b59-b6e7-634feeddb7fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers\model\items">
+      <UniqueIdentifier>{86694248-9618-460d-9c98-32dfe9cabbfc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers\model\traps">
+      <UniqueIdentifier>{6e9a3ac1-52c9-455c-a95d-a06ff7964199}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers\model\unit">
+      <UniqueIdentifier>{407c28f1-b467-4ed7-bdea-f989b22af6f3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt">
+      <Filter>classes\model</Filter>
+    </Text>
   </ItemGroup>
 </Project>
