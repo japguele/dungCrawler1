@@ -43,7 +43,6 @@ Temporary Items
 .apdisk
 
 # Visual Studio
-DungCrawler/DungCrawler.sdf
 DungCrawler/DungCrawler.opensdf
 DungCrawler/DungCrawler/Debug/DungCrawler.tlog/CL.read.1.tlog
 DungCrawler/DungCrawler/Debug/DungCrawler.tlog/CL.write.1.tlog
@@ -53,3 +52,5 @@ DungCrawler/DungCrawler/Debug/DungCrawler.tlog/link.command.1.tlog
 DungCrawler/DungCrawler/Debug/DungCrawler.tlog/link.read.1.tlog
 DungCrawler/DungCrawler/Debug/DungCrawler.tlog/link.write.1.tlog
 DungCrawler/DungCrawler/Debug/vc120.idb
+DungCrawler/DungCrawler.sdf
+DungCrawler/DungCrawler.v12.suo
