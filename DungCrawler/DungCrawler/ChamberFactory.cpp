@@ -6,7 +6,7 @@ ChamberFactory::ChamberFactory()
 {
 	
 }
-Chamber* ChamberFactory::CreateChamber(Chamber* chamber,Direction dir,Level level){
+/*Chamber* ChamberFactory::CreateChamber(Chamber* chamber,Direction dir,Level level){
 	if (chamber != NULL){
 		//TODO RANDOM 1/100 is boss chamber
 		return new Chamber(chamber, dir);
@@ -35,7 +35,7 @@ Start* ChamberFactory::CreateChambers(int ammount){
 	 return null;
 
 	
-}
+}*/
 Level* ChamberFactory::CreateLevel(int depth){
 	return new Level(depth);
 }
