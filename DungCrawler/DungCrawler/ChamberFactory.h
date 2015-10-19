@@ -1,9 +1,6 @@
 #pragma once
 #include "Chamber.h"
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/master
 #include "Start.h"
 #include "Stair.h"
 #include <cstdlib>
