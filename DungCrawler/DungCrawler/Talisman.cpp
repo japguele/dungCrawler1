@@ -26,13 +26,13 @@ Talisman::Talisman() {
 //
 void Talisman::breadthFirstSearch() {
 	//temp hardcoded chamber list
-	Node *startNode = new Node("startNode");
-	Node *node2 = new Node("node2");
-	Node *endNode = new Node("endNode");
-	Node *node4 = new Node("node4");
-	Node *node5 = new Node("node5");
-	Node *node6 = new Node("node6");
-	Node *node7 = new Node("node7");
+	Node *startNode = new Node("STN");
+	Node *node2 = new Node("N2");
+	Node *endNode = new Node("END");
+	Node *node4 = new Node("N4");
+	Node *node5 = new Node("N5");
+	Node *node6 = new Node("N6");
+	Node *node7 = new Node("N7");
 
 	startNode->setNorthNode(node2);
 	node2->setSouthNode(startNode);
