@@ -58,6 +58,12 @@
     <ClCompile Include="Level.cpp">
       <Filter>classes\model\chamber</Filter>
     </ClCompile>
+    <ClCompile Include="Talisman.cpp">
+      <Filter>classes\model\items</Filter>
+    </ClCompile>
+    <ClCompile Include="Node.cpp">
+      <Filter>classes\model\test</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainView.h">
@@ -123,6 +129,12 @@
     <ClInclude Include="Direction.h">
       <Filter>headers\model</Filter>
     </ClInclude>
+    <ClInclude Include="Talisman.h">
+      <Filter>headers\model\items</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>headers\model\test</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="headers">
@@ -160,6 +172,12 @@
     </Filter>
     <Filter Include="headers\model\unit">
       <UniqueIdentifier>{407c28f1-b467-4ed7-bdea-f989b22af6f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="classes\model\test">
+      <UniqueIdentifier>{1114b463-045c-4000-a3ec-2b4208f5bc73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers\model\test">
+      <UniqueIdentifier>{a30b7d14-cc17-49a7-a612-8a258987bf8c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -1,15 +1,42 @@
+#pragma once
 #include "Node.h"
 #include "stdafx.h"
+#pragma once
+#include <iostream>
+#include <string>
 
-Node::Node(Node &northNode, Node &eastNode, Node &southNode, Node &westNode) {
-	m_northNode = &northNode;
-	m_eastNode = &eastNode;
-	m_southNode = &southNode;
-	m_westNode = &westNode;
+//Node::Node(Node &northNode, Node &eastNode, Node &southNode, Node &westNode) {
+//	m_northNode = &northNode;
+//	m_eastNode = &eastNode;
+//	m_southNode = &southNode;
+//	m_westNode = &westNode;
+//}
+
+Node::Node(std::string new_identifier) {
+	m_identifier = new_identifier;
 }
 
-Node::Node() {
-	//empty
+void Node::printAllNodes() {
+	std::cout << m_identifier+"\n";
+
+	if (m_northNode != nullptr) {
+		std::cout << "cNorth ";
+		std::cout << "id: "+m_northNode->getIdentifier() + "\n";
+	}
+	if (m_eastNode != nullptr) {
+		std::cout << "cEast ";
+		std::cout << "id: " + m_eastNode->getIdentifier() + "\n";
+	}
+	if (m_southNode != nullptr) {
+		std::cout << "cSouth ";
+		std::cout << "id: " + m_southNode->getIdentifier() + "\n";
+	}
+	if (m_westNode != nullptr) {
+		std::cout << "cWest ";
+		std::cout << "id: " + m_westNode->getIdentifier() + "\n";
+	}
+
+	std::cout << "\n";
 }
 
 void Node::setNorthNode(Node *node) {
@@ -36,4 +63,8 @@ Node* Node::getSouthNode() const {
 }
 Node* Node::getWestNode() const {
 	return m_westNode;
+}
+
+std::string &Node::getIdentifier() {
+	return m_identifier;
 }
