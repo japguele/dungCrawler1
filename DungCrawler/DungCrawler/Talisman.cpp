@@ -5,6 +5,7 @@
 #include "ChamberFactory.h"
 #include "Node.h"
 #include <iostream>
+#include <list>
 
 Talisman::Talisman() {
 
@@ -56,9 +57,15 @@ void Talisman::breadthFirstSearch() {
 	node6->printAllNodes();
 	node7->printAllNodes();
 
-
 	//breadth first
+	Queue Q;
 
+	/** Keeps track of explored vertices */
+	bool *explored = new bool[n + 1];
+
+	/** Initailized all vertices as unexplored */
+	for (int i = 1; i <= n; ++i)
+		explored[i] = false;
 
 
 
