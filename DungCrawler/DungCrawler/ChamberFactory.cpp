@@ -15,6 +15,7 @@ Chamber* ChamberFactory::CreateChamber(Chamber* chamber,Direction dir,Level leve
 		return new Start();
 	}
 }
+/*
 Start* ChamberFactory::CreateChambers(int ammount){
 	
 	int levels = ammount / 15;
@@ -35,7 +36,7 @@ Start* ChamberFactory::CreateChambers(int ammount){
 	 return null;
 
 	
-}
+}*/
 Level* ChamberFactory::CreateLevel(int depth){
 	return new Level(depth);
 }
