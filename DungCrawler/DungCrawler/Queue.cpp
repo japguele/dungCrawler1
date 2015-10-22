@@ -2,7 +2,7 @@
 #include <iostream>
 
 void Queue::display(){
-	Node *p = new Node;
+	Node *p = new Node("pointer");
 	p = front;
 	if (front == NULL){
 		std::cout << "\nNothing to Display\n";

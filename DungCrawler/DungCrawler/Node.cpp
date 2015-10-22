@@ -1,7 +1,6 @@
 #pragma once
 #include "Node.h"
 #include "stdafx.h"
-#pragma once
 #include <iostream>
 #include <string>
 
@@ -41,6 +40,7 @@ void Node::printAllNodes() {
 
 void Node::setNorthNode(Node *node) {
 	m_northNode = node;
+	//adjacentNodes.add
 }
 void Node::setEastNode(Node *node) {
 	m_eastNode = node;

@@ -6,6 +6,8 @@
 #include "Node.h"
 #include <iostream>
 #include <list>
+#include <queue>
+#include <unordered_set>
 
 Talisman::Talisman() {
 
@@ -58,16 +60,14 @@ void Talisman::breadthFirstSearch() {
 	node7->printAllNodes();
 
 	//breadth first
-	Queue Q;
+	std::queue<Node*> queue = std::queue<Node*>();
+	std::unordered_set<Node*> visited = std::unordered_set<Node*>();
 
-	/** Keeps track of explored vertices */
-	bool *explored = new bool[n + 1];
+	queue.push(startNode);
+	
+	while (!queue.empty) {
 
-	/** Initailized all vertices as unexplored */
-	for (int i = 1; i <= n; ++i)
-		explored[i] = false;
-
-
+	}
 
 	delete startNode;
 	delete node2;

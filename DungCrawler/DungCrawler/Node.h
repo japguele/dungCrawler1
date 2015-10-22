@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <array>
 
 class Node
 {
@@ -9,6 +10,7 @@ private:
 	Node* m_eastNode;
 	Node* m_southNode;
 	Node* m_westNode;
+	std::array<Node*, 4> adjacentNodes;
 
 public :
 	//Node(Node &northNode, Node &eastNode, Node &southNode, Node &westNode);
