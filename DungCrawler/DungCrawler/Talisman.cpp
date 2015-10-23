@@ -6,7 +6,7 @@
 #include "Node.h"
 #include <iostream>
 #include <list>
-#include <queue>
+#include <set>
 #include <unordered_set>
 
 Talisman::Talisman() {
@@ -28,7 +28,6 @@ Talisman::Talisman() {
 //	.	S	.	7	.
 //
 void Talisman::breadthFirstSearch() {
-	//temp hardcoded chamber list
 	Node *startNode = new Node("STN");
 	Node *node2 = new Node("N2");
 	Node *endNode = new Node("END");
@@ -59,15 +58,7 @@ void Talisman::breadthFirstSearch() {
 	node6->printAllNodes();
 	node7->printAllNodes();
 
-	//breadth first
-	std::queue<Node*> queue = std::queue<Node*>();
-	std::unordered_set<Node*> visited = std::unordered_set<Node*>();
-
-	queue.push(startNode);
-	
-	while (!queue.empty) {
-
-	}
+	breadthFirstSearchReal(startNode);
 
 	delete startNode;
 	delete node2;
@@ -76,4 +67,23 @@ void Talisman::breadthFirstSearch() {
 	delete node5;
 	delete node6;
 	delete node7;
+}
+
+void breadthFirstSearchReal(Node* startNode) {
+	//breadth first
+	std::set<Node*> queue = std::set<Node*>();
+	std::unordered_set<Node*> visited = std::unordered_set<Node*>();
+
+	queue.insert(startNode);
+
+	while (!queue.empty) {
+		Node* node = queue.begin;
+		visited.insert(node);
+
+		for (Node* & adjacentNode : node->getAdjacentNodes) {
+			if (visited.find(adjacentNode) != visited.end() && queue.find(adjacentNode) != queue.end()) {
+				queue.insert(adjacentNode);
+			}
+		}
+	}
 }

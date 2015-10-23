@@ -18,6 +18,8 @@ public :
 
 	std::string &getIdentifier();
 	
+	std::array<Node*, 4> getAdjacentNodes() const;
+
 	Node* getNorthNode() const;
 	Node* getEastNode() const;
 	Node* getSouthNode() const;
