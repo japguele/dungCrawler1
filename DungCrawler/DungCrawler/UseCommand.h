@@ -6,6 +6,7 @@ class UseCommand :
 public:
 	UseCommand();
 	virtual void Execute();
+	virtual void Execute(string);
 	~UseCommand();
 };
 

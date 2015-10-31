@@ -5,7 +5,12 @@ class SeeCommand :
 {
 public:
 	SeeCommand();
+	virtual void Execute(string);
 	virtual void Execute();
-	~SeeCommand();
+	void printBackpack();
+	void printSelf();
+	void printMap();
+	void printRoom();
+	~SeeCommand();	
 };
 

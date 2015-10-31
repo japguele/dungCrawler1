@@ -7,7 +7,7 @@ StartCommand::StartCommand()
 }
 
 void StartCommand::Execute(){
-
+	//game.NewGame();
 }
 
 StartCommand::~StartCommand()

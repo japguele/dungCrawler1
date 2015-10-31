@@ -6,6 +6,7 @@ class FightCommand :
 public:
 	FightCommand();
 	virtual void Execute();
+	virtual void Execute(string);
 	~FightCommand();
 };
 

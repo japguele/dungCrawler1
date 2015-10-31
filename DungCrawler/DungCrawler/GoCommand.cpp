@@ -3,12 +3,18 @@
 
 GoCommand::GoCommand()
 {
-	test = 50;
 }
  
-void GoCommand::Execute(string arr) {
-	string param = arr;
-	cout << "I went " << arr <<"\n";
+void GoCommand::Execute(string dir) {
+	/*Chamber currentChamber = hero.currentChamber;*/
+	if (/*currentChamber.dir != null*/true){
+		//player.currentchamber = currentChamber.arr
+		cout << "I went " << dir <<".\n";
+	}
+	else {
+		cout << "Their is no path in this direction.\n";
+	}
+	
 }
 
 void GoCommand::Execute() {
