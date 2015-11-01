@@ -1,21 +1,29 @@
 #pragma once
 #include "Level.h"
 #include "Direction.h"
+#include <string>
+
 
 
 class Chamber
 {
 public:
-	Chamber();
-	Chamber(Chamber*, Direction);
+	
+	Chamber(Level*,int,int,std::string);
 	virtual ~Chamber();
-	void SetChamberInDirection(Chamber*,Direction);
+	virtual void SetChamberInDirection(Chamber*, Direction);
 	
 
 	Level* GetLevel();
 	Chamber* GetChamberInDirection(Direction);
-
+	int GetXpos();
+	int GetYpos();
+	std::string getDescription();
 private:
+	int xpos;
+	int ypos;
+	std::string description;
+protected:
 	Level* level;
 	Chamber* north;
 	Chamber* east;

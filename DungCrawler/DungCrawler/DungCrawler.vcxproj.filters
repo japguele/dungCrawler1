@@ -52,9 +52,6 @@
     <ClCompile Include="MainController.cpp">
       <Filter>classes</Filter>
     </ClCompile>
-    <ClCompile Include="Start.cpp">
-      <Filter>classes\model\chamber</Filter>
-    </ClCompile>
     <ClCompile Include="Level.cpp">
       <Filter>classes\model\chamber</Filter>
     </ClCompile>
@@ -100,9 +97,6 @@
       <Filter>headers\model\traps</Filter>
     </ClInclude>
     <ClInclude Include="Stair.h">
-      <Filter>headers\model\chamber</Filter>
-    </ClInclude>
-    <ClInclude Include="Start.h">
       <Filter>headers\model\chamber</Filter>
     </ClInclude>
     <ClInclude Include="Trap.h">

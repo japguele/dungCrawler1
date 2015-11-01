@@ -4,5 +4,7 @@ class Unit
 public:
 	Unit();
 	virtual ~Unit();
+private:
+	
 };
 
