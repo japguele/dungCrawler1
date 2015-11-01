@@ -93,10 +93,9 @@ Chamber* ChamberFactory::CreateChambers(int ammount){
 	else{
 		return ray.get(5, 5, 0);
 	}
-
-	
 	
 }
+
 
 
 
@@ -118,7 +117,7 @@ void ChamberFactory::RandomChambersArround(Chamber* cham,int north,int south,int
 			if (c != nullptr){
 				RandomChambersArround(c, north, south - 1, west, east);
 			}
-		
+
 
 	}
 	if (east > 0){
@@ -130,7 +129,7 @@ void ChamberFactory::RandomChambersArround(Chamber* cham,int north,int south,int
 		
 	}
 	if (west > 0){
-	
+
 			Chamber* c = RandomChamberDirection(cham, Direction::West);
 			if (c != nullptr){
 				RandomChambersArround(c, north, south, west - 1, east);
@@ -190,6 +189,7 @@ Chamber* ChamberFactory::CreateChamber(Level* l, int xpos, int ypos){
 		return c;
 		
 	}
+
 }
 
 ChamberFactory::~ChamberFactory()
