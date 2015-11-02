@@ -18,6 +18,12 @@ Array3D::Array3D(size_t xLength, size_t yLength, size_t zLength) : x_size{ xLeng
 			}
 		}
 	}
+	if (get(6, 6, 2) == nullptr){
+
+	}
+	else{
+		int a = 0;
+	}
 	
 
 }

@@ -46,7 +46,7 @@ Chamber* ChamberFactory::CreateChambers(int ammount){
 
 	int levels = ammount / 100;
 
-	int v2 =  rand() % (5);
+	int v2 =  rand() % 5;
 	v2 = v2 + levels;
 	ray = Array3D(10, 10, v2);
 
@@ -54,12 +54,12 @@ Chamber* ChamberFactory::CreateChambers(int ammount){
 	// std::vector<Stair*> stairs(v2);    // make room for 10 integers,
 	// and initialize them to 0
 	// do something with them:
-	for (int i = 0; i < v2; ++i){
+	for (int i = 0; i < v2; i++){
 		//create levels plus stairs
 		level[i] = new Level(i);
-
-		Chamber* chamber = new Stair(level[i], 4, 4);
-		ray.put(chamber, 4, 4, i);
+		Chamber* chamber = nullptr;
+		chamber = new Stair(level[i], 4, 4);
+		ray.put(chamber, 4, 4, chamber->GetLevel()->GetDepth());
 		RandomChambersArround(chamber, 4, 4, 4, 4);
 
 	}
@@ -105,7 +105,8 @@ void ChamberFactory::RandomChambersArround(Chamber* cham,int north,int south,int
 	if (north > 0){
 	
 
-			Chamber* c = RandomChamberDirection(cham, Direction::North);
+		Chamber* c = nullptr;
+				c = RandomChamberDirection(cham, Direction::North);
 			if (c != nullptr){
 				RandomChambersArround(c, north - 1, south, west, east);
 			}
@@ -113,7 +114,8 @@ void ChamberFactory::RandomChambersArround(Chamber* cham,int north,int south,int
 	}
 	if (south > 0){
 	
-			Chamber* c = RandomChamberDirection(cham, Direction::South);
+		Chamber* c = nullptr;
+				c = RandomChamberDirection(cham, Direction::South);
 			if (c != nullptr){
 				RandomChambersArround(c, north, south - 1, west, east);
 			}
@@ -122,7 +124,8 @@ void ChamberFactory::RandomChambersArround(Chamber* cham,int north,int south,int
 	}
 	if (east > 0){
 		
-			Chamber* c = RandomChamberDirection(cham, Direction::East);
+		Chamber* c = nullptr;
+				c = RandomChamberDirection(cham, Direction::East);
 			if (c != nullptr){
 				RandomChambersArround(c, north, south, west, east - 1);
 			}
@@ -130,7 +133,8 @@ void ChamberFactory::RandomChambersArround(Chamber* cham,int north,int south,int
 	}
 	if (west > 0){
 
-			Chamber* c = RandomChamberDirection(cham, Direction::West);
+		Chamber* c = nullptr;
+				c = RandomChamberDirection(cham, Direction::West);
 			if (c != nullptr){
 				RandomChambersArround(c, north, south, west - 1, east);
 			}
@@ -159,11 +163,11 @@ Chamber* ChamberFactory::RandomChamberDirection(Chamber* cham,Direction d){
 	}
 	Chamber* c = nullptr;
 	if (ray.get(x, y, z) == nullptr || ray.get(x, y, z) == NULL){
-		if (rand() % 2 == 1){
+		if (rand() % 5 > 1){
 			c = CreateChamber(cham->GetLevel(), x, y);
 			cham->SetChamberInDirection(c, d);
 		}
-	}	else if (rand() % 4 >1 ){
+	}	else if (rand() % 4 > 1 ){
 		cham->SetChamberInDirection(ray.get(x, y, z), d);
 
 	}
@@ -171,25 +175,17 @@ Chamber* ChamberFactory::RandomChamberDirection(Chamber* cham,Direction d){
 }
 
 Chamber* ChamberFactory::CreateChamber(Level* l, int xpos, int ypos){
+	Chamber* c = nullptr;
 
-	if (l->GetDepth() > 5 && rand() % 50 == 1){		
-		return new BossChamber(l, xpos, ypos);
-	}
-	else{
-	
-		
 		string discription = "You enter a " + size[rand() % 3] + light[rand() % 3]  + chambertype[rand() % 10] + "in the room you see " + objects[rand() % 10];
 		counter = counter + 1;
 		cout << counter;
-		if (counter == 70){
-			int po = 0;
-		}
-		Chamber* c = new Chamber(l, xpos, ypos,discription);
+	
+		c = new Chamber(l, xpos, ypos,discription);
 		ray.put(c, xpos, ypos, l->GetDepth());
 		return c;
 		
-	}
-
+	
 }
 
 ChamberFactory::~ChamberFactory()

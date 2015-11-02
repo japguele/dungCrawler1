@@ -36,7 +36,9 @@ Chamber* Chamber::GetChamberInDirection(Direction dir){
 }
 
 void Chamber::SetChamberInDirection(Chamber* cham, Direction dir){
-	if (cham != nullptr){
+
+
+	if (cham){
 	switch (dir)
 	{
 	case Direction::North:
