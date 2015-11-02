@@ -1,9 +1,10 @@
 #pragma once
+#include "Node.h"
 
 class Talisman
 {
 public:
 	Talisman();
 	void breadthFirstSearch();
-	void breadthFirstSearchReal(Node* startNode);
+	int breadthFirstSearchReal(Node* startNode, Node* goal);
 };

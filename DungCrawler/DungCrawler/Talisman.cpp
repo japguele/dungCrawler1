@@ -3,10 +3,9 @@
 #include "Talisman.h"
 #include "Chamber.h"
 #include "ChamberFactory.h"
-#include "Node.h"
 #include <iostream>
 #include <list>
-#include <set>
+#include <deque>
 #include <unordered_set>
 #include <unordered_map>
 
@@ -37,7 +36,7 @@ void Talisman::breadthFirstSearch() {
 	Node *node6 = new Node("N6");
 	Node *node7 = new Node("N7");
 
-	startNode->setNorthNode(node2);
+	/*startNode->setNorthNode(node2);
 	node2->setSouthNode(startNode);
 	node2->setNorthNode(endNode);
 	endNode->setSouthNode(node2);
@@ -48,7 +47,22 @@ void Talisman::breadthFirstSearch() {
 	node4->setEastNode(node6);
 	node6->setWestNode(node4);
 	node6->setSouthNode(node7);
-	node7->setNorthNode(node7);
+	node7->setNorthNode(node6);*/
+
+	//node 7 & endNode swap test
+
+	startNode->setNorthNode(node2);
+	node2->setSouthNode(startNode);
+	node2->setNorthNode(node7); //swap
+	node7->setSouthNode(node2); //swap
+	node2->setEastNode(node4);
+	node4->setWestNode(node2);
+	node4->setNorthNode(node5);
+	node5->setSouthNode(node4);
+	node4->setEastNode(node6);
+	node6->setWestNode(node4);
+	node6->setSouthNode(endNode); //swap
+	endNode->setNorthNode(node6); //swap
 
 	//test
 	startNode->printAllNodes();
@@ -59,7 +73,8 @@ void Talisman::breadthFirstSearch() {
 	node6->printAllNodes();
 	node7->printAllNodes();
 
-	breadthFirstSearchReal(startNode);
+	std::cout << "Durr?" << std::endl;
+	std::cout << "BFS Distance Talisman: " << breadthFirstSearchReal(startNode, endNode) << std::endl;
 
 	delete startNode;
 	delete node2;
@@ -70,22 +85,35 @@ void Talisman::breadthFirstSearch() {
 	delete node7;
 }
 
-void breadthFirstSearchReal(Node* startNode) {
+int Talisman::breadthFirstSearchReal(Node* startNode, Node* goal) {
 	//breadth first
-	std::set<Node*> queue = std::set<Node*>();
+	std::deque<Node*> queue = std::deque<Node*>();
 	std::unordered_set<Node*> visited = std::unordered_set<Node*>();
-	//std::unordered_map<Node*, int distance> distance;
+	std::unordered_map<Node*, int> distance = std::unordered_map<Node*, int>();
 
-	queue.insert(startNode);
+	queue.push_back(startNode);
+	distance[startNode] = 0;
 
-	while (!queue.empty) {
-		Node* node = queue.begin;
-		visited.insert(node);
+	while (!queue.empty()) {
+		Node* node = queue.front(); //get first element
+		visited.insert(node); //enqueue / push
+		std::cout << "current Node: " + node->getIdentifier() << std::endl;
 
-		for (Node* & adjacentNode : node->getAdjacentNodes) {
-			if (visited.find(adjacentNode) != visited.end() && queue.find(adjacentNode) != queue.end()) {
-				queue.insert(adjacentNode);
+		//for (int i = 0; i<node->getAdjacentNodes.; i++) {
+		for (unsigned int i = 0; i < node->getAdjacentNodes().size(); i++) {
+			std::cout << "adjacent Node: " + node->getAdjacentNodes()[i]->getIdentifier() << std::endl;
+			if (std::find(visited.begin(), visited.end(), node->getAdjacentNodes()[i]) == visited.end()
+					&& std::find(queue.begin(), queue.end(), node->getAdjacentNodes()[i]) == queue.end()) {
+				std::cout << "not inside queue & visited" << std::endl;
+				distance[node->getAdjacentNodes()[i]] = distance[node] + 1;
+				if (node->getAdjacentNodes()[i] == goal) {
+					return distance[node->getAdjacentNodes()[i]];
+				}
+				queue.push_back(node->getAdjacentNodes()[i]);
 			}
 		}
+		queue.pop_front(); //dequeue / pop
 	}
+
+	return -1; //not found, catch -1
 }

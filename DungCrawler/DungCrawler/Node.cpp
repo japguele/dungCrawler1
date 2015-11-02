@@ -40,22 +40,26 @@ void Node::printAllNodes() {
 
 void Node::setNorthNode(Node *node) {
 	m_northNode = node;
-	adjacentNodes[0] = node;
+	adjacentNodes.push_back(node);
+	//adjacentNodes[0] = node;
 }
 void Node::setEastNode(Node *node) {
 	m_eastNode = node;
-	adjacentNodes[1] = node;
+	adjacentNodes.push_back(node);
+	//adjacentNodes[1] = node;
 }
 void Node::setSouthNode(Node *node) {
 	m_southNode = node;
-	adjacentNodes[2] = node;
+	adjacentNodes.push_back(node);
+	//adjacentNodes[2] = node;
 }
 void Node::setWestNode(Node *node) {
 	m_westNode = node;
-	adjacentNodes[3] = node;
+	adjacentNodes.push_back(node);
+	//adjacentNodes[3] = node;
 }
 
-std::array<Node*, 4> Node::getAdjacentNodes() const {
+std::vector<Node*> Node::getAdjacentNodes() const {
 	return adjacentNodes;
 }
 

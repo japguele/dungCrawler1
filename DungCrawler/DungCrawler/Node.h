@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include <array>
+#include <vector>
 
 class Node
 {
@@ -10,7 +10,7 @@ private:
 	Node* m_eastNode;
 	Node* m_southNode;
 	Node* m_westNode;
-	std::array<Node*, 4> adjacentNodes;
+	std::vector<Node*> adjacentNodes;
 
 public :
 	//Node(Node &northNode, Node &eastNode, Node &southNode, Node &westNode);
@@ -18,7 +18,7 @@ public :
 
 	std::string &getIdentifier();
 	
-	std::array<Node*, 4> getAdjacentNodes() const;
+	std::vector<Node*> getAdjacentNodes() const;
 
 	Node* getNorthNode() const;
 	Node* getEastNode() const;

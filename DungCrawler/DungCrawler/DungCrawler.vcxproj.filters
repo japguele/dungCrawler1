@@ -135,9 +135,6 @@
     <ClInclude Include="Node.h">
       <Filter>headers\model\test</Filter>
     </ClInclude>
-    <ClInclude Include="Vertex.h">
-      <Filter>headers\model\test</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="headers">
