@@ -8,6 +8,7 @@
 #include <list>
 #include <set>
 #include <unordered_set>
+#include <unordered_map>
 
 Talisman::Talisman() {
 
@@ -73,6 +74,7 @@ void breadthFirstSearchReal(Node* startNode) {
 	//breadth first
 	std::set<Node*> queue = std::set<Node*>();
 	std::unordered_set<Node*> visited = std::unordered_set<Node*>();
+	//std::unordered_map<Node*, int distance> distance;
 
 	queue.insert(startNode);
 

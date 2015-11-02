@@ -101,6 +101,7 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Trap.h" />
     <ClInclude Include="Unit.h" />
+    <ClInclude Include="Vertex.h" />
     <ClInclude Include="Weapon.h" />
   </ItemGroup>
   <ItemGroup>
