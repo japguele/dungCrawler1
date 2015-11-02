@@ -5,6 +5,7 @@
 MainController::MainController()
 {
 	mv = new MainView;
+	CreateNewDung(1000);
 	handler = InputHandler();
 	Run();
 }
@@ -21,6 +22,7 @@ void MainController::Run(){
 
 void MainController::CreateNewDung(int chambers){
 	dg = new Dungeon(chambers);
+	
 }
 
 MainController::~MainController()

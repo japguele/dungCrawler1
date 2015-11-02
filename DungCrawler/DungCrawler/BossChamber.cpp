@@ -2,7 +2,7 @@
 #include "BossChamber.h"
 
 
-BossChamber::BossChamber()
+BossChamber::BossChamber(Level* lvl, int x, int y) : Chamber(lvl, x, y,"boss chamber")
 {
 }
 

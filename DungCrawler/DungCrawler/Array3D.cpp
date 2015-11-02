@@ -3,7 +3,23 @@
 
 Array3D::Array3D(size_t xLength, size_t yLength, size_t zLength) : x_size{ xLength }, y_size{ yLength }, z_size{ zLength }
 {
-	array = new int[xLength*yLength*zLength];
+
+	array = new Chamber*[xLength*yLength*zLength];
+	for (int x = 0; x < xLength; x++){
+		for (int y = 0; y < yLength; y++){
+			for (int z =  0; z < zLength; z++){
+				put(nullptr, x, y, z);
+				if (get(x, y, z) == nullptr){
+					
+				}
+				else{
+					int a = 0;
+				}
+			}
+		}
+	}
+	
+
 }
 Array3D::Array3D(){
 
@@ -13,7 +29,7 @@ Array3D::Array3D(const Array3D& other) : x_size{ other.x_size }, y_size{ other.y
 	int arraySize = x_size * y_size * z_size;
 
 	// eigen buffer maken
-	array = new int[arraySize];
+	array = new Chamber*[arraySize];
 
 	// alle bytes van de ander kopiëren
 	std::memcpy(array, other.array, arraySize*sizeof(int));
@@ -30,7 +46,7 @@ Array3D& Array3D::operator=(const Array3D& other) {
 
 		int arraySize = x_size * y_size * z_size;
 		// eigen buffer maken
-		array = new int[arraySize];
+		array = new Chamber*[arraySize];
 
 		// alle bytes van de ander kopiëren
 		std::memcpy(array, other.array, arraySize);
@@ -61,32 +77,16 @@ Array3D& Array3D::operator=(Array3D&& other){
 	return *this;
 }
 
-bool Array3D::operator==(const Array3D& other){
-	if (other.x_size == x_size &&
-		other.y_size == y_size &&
-		other.z_size == z_size){
-
-		int arrayLength = x_size*y_size*z_size;
-		for (int counter = 0; counter < arrayLength; counter++){
-			if (!other.array[counter] == array[counter]){
-				return false;
-			}
-		}
-		return true;
-	}
-	else{
-		return false;
-	}
-}
 
 
 
-int Array3D::get(size_t x, size_t y, size_t z) const{
+
+Chamber* Array3D::get(size_t x, size_t y, size_t z) const{
 	size_t index = Index(x, y, z);
 	return array[index];
 }
 
-void Array3D::put(int input, size_t x, size_t y, size_t z){
+void Array3D::put(Chamber* input, size_t x, size_t y, size_t z){
 	size_t index = Index(x, y, z);
 	array[index] = input;
 }

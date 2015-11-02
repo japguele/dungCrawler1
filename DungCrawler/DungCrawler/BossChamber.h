@@ -1,11 +1,12 @@
 #pragma once
 #include "Chamber.h"
+#include <string>
 
 class BossChamber :
 	public Chamber
 {
 public:
-	BossChamber();
+	BossChamber(Level* lvl, int x, int y);
 	~BossChamber();
 };
 

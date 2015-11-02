@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include "Chamber.h"
 
 class Array3D
 {
@@ -18,8 +19,8 @@ public:
 	size_t get_y_size() const;
 	size_t get_z_size() const;
 
-	void put(int, size_t, size_t, size_t);
-	int get(size_t, size_t, size_t) const;
+	void put(Chamber*, size_t, size_t, size_t);
+	Chamber* get(size_t, size_t, size_t) const;
 
 	~Array3D();
 private:
@@ -27,7 +28,7 @@ private:
 	size_t y_size;
 	size_t z_size;
 
-	int* array;
+	Chamber** array = nullptr;
 
 	size_t Index(size_t, size_t, size_t) const;
 };

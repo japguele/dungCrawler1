@@ -17,6 +17,10 @@ int Level::Randomize(){
 	return rand() % (depth + 2) + depth;
 }
 
+
 Level::~Level()
 {
+}
+int Level::GetDepth(){
+	return depth;
 }

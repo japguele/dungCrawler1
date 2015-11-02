@@ -2,13 +2,16 @@
 #include "Chamber.h"
 
 
-Chamber::Chamber()
-{	
-}
-Chamber::Chamber(Chamber* cham,Direction dir)
+Chamber::Chamber(Level* lvl,int x,int y,std::string dis)
 {
-	SetChamberInDirection(cham, dir);
-	
+	xpos = x;
+	ypos = y;
+	level = lvl;
+	description = dis;
+	north = nullptr;
+	south = nullptr;
+	west = nullptr;
+	east = nullptr;
 }
 Chamber* Chamber::GetChamberInDirection(Direction dir){
 	switch (dir)
@@ -32,27 +35,40 @@ Chamber* Chamber::GetChamberInDirection(Direction dir){
 	
 }
 
-void Chamber::SetChamberInDirection(Chamber* cham,Direction dir){
+void Chamber::SetChamberInDirection(Chamber* cham, Direction dir){
+	if (cham != nullptr){
 	switch (dir)
 	{
 	case Direction::North:
 		north = cham;
+		cham->south = this;
 		break;
 	case Direction::South:
 		south = cham;
+		cham->north = this;
 		break;
 	case Direction::West:
 		west = cham;
+		cham->east = this;
 		break;
 	case Direction::East:
 		east = cham;
+		cham->west = this;
 		break;
 	default:
 		break;
 	}
 }
-
-
+}
+Level* Chamber::GetLevel(){
+	return level;
+}
+int Chamber::GetXpos(){
+	return xpos;
+}
+int Chamber::GetYpos(){
+	return ypos;
+}
 
 
 Chamber::~Chamber()
