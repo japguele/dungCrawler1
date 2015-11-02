@@ -4,7 +4,10 @@ class Unit
 public:
 	Unit();
 	virtual ~Unit();
-private:
-	
+protected:
+	int health;
+	int level;
+	int offense;
+	int defence;
 };
 
