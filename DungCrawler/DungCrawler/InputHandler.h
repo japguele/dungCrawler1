@@ -7,10 +7,11 @@
 class InputHandler
 {
 public:
-	InputHandler();	
+	InputHandler();
+	InputHandler(Dungeon*);	
 	void Handle(string input);
 	~InputHandler();
 private:
-	CommandFactory commands;
+	CommandFactory* commands;
 };
 

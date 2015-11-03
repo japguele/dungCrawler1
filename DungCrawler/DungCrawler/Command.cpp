@@ -4,6 +4,11 @@
 
 Command::Command()
 {
+
+}
+
+void Command::Init(Dungeon* dun){
+	game = dun;
 }
 
 void Command::Execute(string para){

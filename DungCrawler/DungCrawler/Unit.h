@@ -4,6 +4,11 @@ class Unit
 public:
 	Unit();
 	virtual ~Unit();
+	int GetLevel();
+	int GetHealth();
+	int GetOffense();
+	int GetDefense();
+	void TakeDamage(int);
 protected:
 	int health;
 	int level;

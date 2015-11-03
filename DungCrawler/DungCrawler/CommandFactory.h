@@ -15,6 +15,7 @@ class CommandFactory
 {
 public:
 	CommandFactory();
+	CommandFactory(Dungeon*);
 	Command* GetCommand(string);
 	bool existingCommands(string);
 	~CommandFactory();

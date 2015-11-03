@@ -2,8 +2,11 @@
 #include "CommandFactory.h"
 #include <iostream>
 
+CommandFactory::CommandFactory(){
+	cout << "error";
+}
 
-CommandFactory::CommandFactory()
+CommandFactory::CommandFactory(Dungeon* dun)
 {
 	commands = unordered_map<string, Command*>{
 		{ "fight", new FightCommand() },
@@ -16,6 +19,10 @@ CommandFactory::CommandFactory()
 		{ "start", new StartCommand() },
 		{ "use", new UseCommand() }
 	};
+	for (auto it = commands.begin(); it != commands.end(); it++){
+		Command* tempCommand = it->second;
+		tempCommand->Init(dun);
+	}
 }
 
 bool CommandFactory::existingCommands(string input){

@@ -11,5 +11,7 @@ public:
 	void Execute(string arr) override;
 	void Execute() override;
 	~GoCommand();
+private:
+	unordered_map<string, Direction> directions;
 };
 

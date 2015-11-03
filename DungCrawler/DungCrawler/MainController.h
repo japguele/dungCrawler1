@@ -15,5 +15,5 @@ public:
 private:
 	MainView* mv;
 	Dungeon* dg;
-	InputHandler handler;
+	InputHandler* handler;
 };

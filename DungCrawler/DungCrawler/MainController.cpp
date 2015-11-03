@@ -1,12 +1,11 @@
 #include "stdafx.h"
 #include "MainController.h"
 
-
 MainController::MainController()
 {
 	mv = new MainView;
 	CreateNewDung(1000);
-	handler = InputHandler();
+	handler = new InputHandler(dg);
 	Run();
 }
 
@@ -15,7 +14,7 @@ void MainController::Run(){
 		string inputString;
 		cout << "Please tell me what to do\n";
 		getline(cin, inputString);
-		handler.Handle(inputString);
+		handler->Handle(inputString);
 	}
 	//Run();
 }
