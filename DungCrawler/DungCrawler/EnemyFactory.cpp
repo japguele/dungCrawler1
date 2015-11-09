@@ -1,10 +1,10 @@
 #include "stdafx.h"
 #include "EnemyFactory.h"
-
+#include "Enemy.h"
 
 EnemyFactory::EnemyFactory()
 {
-	units = unordered_map<UnitType, Enemy>{
+	units = std::unordered_map<UnitType, Enemy>{
 			{ UnitType::Enemy, Enemy() }
 		
 	};

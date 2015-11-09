@@ -10,10 +10,10 @@ class Enemy :
 public:
 	Enemy();
 	virtual ~Enemy();
-	string disc;
+	std::string disc;
 	virtual Enemy* createEnemy();
 	int getAttack();
-	void Init(int,string);
+	void Init(int, std::string);
 };
 
 

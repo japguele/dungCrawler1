@@ -1,6 +1,6 @@
 #pragma once
-
-class Chamber;
+#include "Chamber.h"
+#include "Enemy.h"
 class BossChamber :
 	public Chamber
 {

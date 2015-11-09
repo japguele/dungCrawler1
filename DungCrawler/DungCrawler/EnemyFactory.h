@@ -1,20 +1,22 @@
 #pragma once
 #pragma message ("Enemyfac")
-#include "Enemy.h"
+
 #include <unordered_map>
 #include "UnitType.h"
 #include "Level.h"
+#include <string>
+class Enemy;
 class EnemyFactory
 {
 public:
 	EnemyFactory();
 	~EnemyFactory();
 	Enemy* createEnemy(UnitType,Level* level);
-	string type[5];
-	string teeth[3];
-	string find[3];
+	std::string type[5];
+	std::string teeth[3];
+	std::string find[3];
 
 private:
-	unordered_map<UnitType, Enemy> units;
+	std::unordered_map<UnitType, Enemy> units;
 };
 

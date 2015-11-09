@@ -9,7 +9,7 @@ Enemy::Enemy()
 Enemy* Enemy::createEnemy(){
 	return new Enemy();
 }
-void Enemy::Init(int diff ,string disc_){
+void Enemy::Init(int diff, std::string disc_){
 	disc = disc_;
 	health = 30 + (diff * 8);
 	level = diff;
