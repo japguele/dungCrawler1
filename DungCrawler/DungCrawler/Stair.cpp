@@ -1,8 +1,12 @@
 #include "stdafx.h"
+#include "Chamber.h"
+
+
 #include "Stair.h"
 
 
-Stair::Stair(Level* lvl,int x,int y) : Chamber(lvl,x,y,"stair")
+
+Stair::Stair(Level* lvl,int x,int y,Enemy* en) : Chamber(lvl,x,y,"stair",en)
 {
 	
 }

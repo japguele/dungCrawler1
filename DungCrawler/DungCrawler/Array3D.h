@@ -28,7 +28,7 @@ private:
 	size_t y_size;
 	size_t z_size;
 
-	Chamber** array = nullptr;
+	Chamber* array[10000];
 
 	size_t Index(size_t, size_t, size_t) const;
 };

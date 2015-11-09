@@ -88,6 +88,7 @@
     <ClInclude Include="Direction.h" />
     <ClInclude Include="Dungeon.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EnemyFactory.h" />
     <ClInclude Include="FightCommand.h" />
     <ClInclude Include="GoCommand.h" />
     <ClInclude Include="HelpCommand.h" />
@@ -109,6 +110,7 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Trap.h" />
     <ClInclude Include="Unit.h" />
+    <ClInclude Include="UnitType.h" />
     <ClInclude Include="UseCommand.h" />
     <ClInclude Include="Weapon.h" />
   </ItemGroup>
@@ -122,6 +124,7 @@
     <ClCompile Include="DungCrawler.cpp" />
     <ClCompile Include="Dungeon.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EnemyFactory.cpp" />
     <ClCompile Include="FightCommand.cpp" />
     <ClCompile Include="GoCommand.cpp" />
     <ClCompile Include="HelpCommand.cpp" />

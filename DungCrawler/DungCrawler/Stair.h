@@ -1,13 +1,15 @@
 #pragma once
 
-#include "Chamber.h"
+
+class Chamber;
+
 class Stair :
 	public Chamber
 {
 public:
 
 	~Stair();
-	Stair(Level* lvl, int x, int y);
+	Stair(Level* lvl, int x, int y,Enemy* en);
 	virtual void SetChamberInDirection(Chamber*, Direction);
 private:
 	Chamber* up;
