@@ -2,8 +2,9 @@
 #include "Chamber.h"
 
 
-Chamber::Chamber(Level* lvl,int x,int y,std::string dis)
+Chamber::Chamber(Level* lvl,int x,int y,std::string dis,Enemy* en)
 {
+	enemy = en;
 	xpos = x;
 	ypos = y;
 	level = lvl;
@@ -12,6 +13,12 @@ Chamber::Chamber(Level* lvl,int x,int y,std::string dis)
 	south = nullptr;
 	west = nullptr;
 	east = nullptr;
+	if (rand() % 3 > 2){
+		
+	}
+}
+Enemy* Chamber::GetEnemy(){
+	return enemy;
 }
 Chamber* Chamber::GetChamberInDirection(Direction dir){
 	switch (dir)

@@ -6,6 +6,8 @@ public:
 	Level(int);
 	~Level();
 	int GetDepth();
+	int GetMonsterDif();
+	
 private:
 	int Randomize();
 	int depth;

@@ -16,6 +16,9 @@ Level::Level(int depth1)
 int Level::Randomize(){
 	return rand() % (depth + 2) + depth;
 }
+int Level::GetMonsterDif(){
+	return monsterDiffeculty;
+}
 
 
 Level::~Level()

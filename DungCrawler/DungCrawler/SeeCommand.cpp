@@ -31,6 +31,7 @@ void SeeCommand::Execute(string command){
 }
 
 void SeeCommand::printBackpack(){
+
 	string backpack[] = game.hero.GetBackpack();
 	cout << "My backpack contains:\n";
 	for (int i = 0; i < backpack.length(); i++){

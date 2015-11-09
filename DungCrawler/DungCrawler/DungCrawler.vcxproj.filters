@@ -91,6 +91,9 @@
     <ClCompile Include="HelpCommand.cpp">
       <Filter>classes\model\commands</Filter>
     </ClCompile>
+    <ClCompile Include="EnemyFactory.cpp">
+      <Filter>classes\model\unit</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainView.h">
@@ -188,6 +191,12 @@
     </ClInclude>
     <ClInclude Include="HelpCommand.h">
       <Filter>headers\model\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyFactory.h">
+      <Filter>headers\model\unit</Filter>
+    </ClInclude>
+    <ClInclude Include="UnitType.h">
+      <Filter>headers\model\unit</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
