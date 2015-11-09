@@ -79,6 +79,10 @@ int Chamber::GetYpos(){
 	return ypos;
 }
 
+void Chamber::AttackEnemy(int damage){
+	//attack enemy
+}
+
 
 Chamber::~Chamber()
 {

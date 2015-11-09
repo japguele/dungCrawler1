@@ -11,6 +11,13 @@ void SeeCommand::Execute(){
 
 }
 
+actions hashit(string const& inString) {
+	if (inString == "backpack") return backpack;
+	if (inString == "self") return self;
+	if (inString == "map") return map;
+	if (inString == "chamber") return chamber;
+}
+
 void SeeCommand::Execute(string command){
 	switch (hashit(command)){
 	case backpack:
@@ -30,29 +37,29 @@ void SeeCommand::Execute(string command){
 	}
 }
 
-void SeeCommand::printBackpack(){
+void SeeCommand::printBackpack(){/*
+	string backpack[] = game->GetHero()->GetBackpack();
 
-	string backpack[] = game.hero.GetBackpack();
 	cout << "My backpack contains:\n";
 	for (int i = 0; i < backpack.length(); i++){
 		if (backpack[i] != null){
 			cout << "\t-" << backpack[i] << ".\n";
 		}
-	}
+	}*/
 }
 
 void SeeCommand::printSelf(){
-	Hero hero = game.gethero();
-	cout << "My stats are: \n";
-	cout << "My level is: \n";
-	cout << "I need ... more exp to level up: \n";
+	Hero* hero = game->GetHero();
+	cout << "My stats are: " << hero->GetOffense() << " offense, " << hero->GetDefense() << " defense.\n";
+	cout << "My level is: " << hero->GetLevel() << "\n";
+	cout << "I need "<< (100 - hero->GetExperience())<<" more exp to level up: \n";
 }
 
 void SeeCommand::printMap(){
-	// TODO
+	//
 }
 
-void SeeCommand::printRoom(){
+void SeeCommand::printRoom(){/*
 	string layout = game.currentChamber.GetLayout();
 	string description = game.currentChamber.GetDescription();
 	string enemy = game.currentChamber.GetEnemy();
@@ -78,14 +85,7 @@ void SeeCommand::printRoom(){
 	}
 	if (level != null){
 		cout << "This chamber is on level: " << level << ".\n";
-	}
-}
-
-actions hashit(string const& inString) {
-	if (inString == "backpack") return backpack;
-	if (inString == "self") return self;
-	if (inString == "map") return map;
-	if (inString == "room") return room;
+	}*/
 }
 
 SeeCommand::~SeeCommand()

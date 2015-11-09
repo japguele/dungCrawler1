@@ -1,5 +1,6 @@
 #pragma once
 #include "Command.h"
+#include "Hero.h"
 class SeeCommand :
 	public Command
 {

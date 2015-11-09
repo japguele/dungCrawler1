@@ -1,6 +1,9 @@
 #include "stdafx.h"
 #include "Hero.h"
 
+Hero::Hero(){
+
+}
 
 Hero::Hero(string n)
 {
@@ -39,6 +42,31 @@ void Hero::DrinkPotion(int pot){
 	cout << "Drinking this potion heals me: " << pot << ".\n";
 	health += pot;
 	cout << "My Health now is: " << health << ".\n";
+}
+
+void Hero::SetCurrentChamber(Chamber* chamber){
+	currentChamber = chamber;
+}
+
+int Hero::GetExperience(){
+	return experience;
+}
+
+Chamber* Hero::GetChamber(){
+	return currentChamber;
+}
+
+void Hero::Attack(){
+	currentChamber->AttackEnemy(offense);
+}
+
+void Hero::Magic(){
+	int ownDamage = rand() % 10 + 1;
+	TakeDamage(ownDamage);
+	currentChamber->AttackEnemy(offense);
+}
+void Hero::RunAway(){
+
 }
 
 Hero::~Hero()

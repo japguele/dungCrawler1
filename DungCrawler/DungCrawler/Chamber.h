@@ -21,7 +21,10 @@ public:
 	int GetXpos();
 	int GetYpos();
 	std::string getDescription();
+
 	Enemy* GetEnemy();
+
+	void AttackEnemy(int);
 private:
 	Enemy* enemy;
 	int xpos;
