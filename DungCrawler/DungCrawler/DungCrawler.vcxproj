@@ -86,6 +86,8 @@
     <ClInclude Include="Direction.h" />
     <ClInclude Include="Dungeon.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="HandGrenade.h" />
+    <ClInclude Include="HardcodedNodeDungeon.h" />
     <ClInclude Include="Hero.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Level.h" />
@@ -111,6 +113,8 @@
     <ClCompile Include="DungCrawler.cpp" />
     <ClCompile Include="Dungeon.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="HandGrenade.cpp" />
+    <ClCompile Include="HardCodedNodeDungeon.cpp" />
     <ClCompile Include="Hero.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Level.cpp" />

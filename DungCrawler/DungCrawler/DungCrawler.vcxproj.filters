@@ -64,6 +64,12 @@
     <ClCompile Include="Node.cpp">
       <Filter>classes\model\test</Filter>
     </ClCompile>
+    <ClCompile Include="HandGrenade.cpp">
+      <Filter>classes\model\items</Filter>
+    </ClCompile>
+    <ClCompile Include="HardCodedNodeDungeon.cpp">
+      <Filter>classes\model\test</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainView.h">
@@ -133,6 +139,12 @@
       <Filter>headers\model\items</Filter>
     </ClInclude>
     <ClInclude Include="Node.h">
+      <Filter>headers\model\test</Filter>
+    </ClInclude>
+    <ClInclude Include="HandGrenade.h">
+      <Filter>headers\model\items</Filter>
+    </ClInclude>
+    <ClInclude Include="HardcodedNodeDungeon.h">
       <Filter>headers\model\test</Filter>
     </ClInclude>
   </ItemGroup>
