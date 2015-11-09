@@ -49,13 +49,13 @@ void SeeCommand::printBackpack(){/*
 
 void SeeCommand::printSelf(){
 	Hero* hero = game->GetHero();
-	cout << "My stats are: " << hero->GetLevel() << "\n";
+	cout << "My stats are: " << hero->GetOffense() << " offense, " << hero->GetDefense() << " defense.\n";
 	cout << "My level is: " << hero->GetLevel() << "\n";
 	cout << "I need "<< (100 - hero->GetExperience())<<" more exp to level up: \n";
 }
 
 void SeeCommand::printMap(){
-	// TODO
+	//
 }
 
 void SeeCommand::printRoom(){/*
