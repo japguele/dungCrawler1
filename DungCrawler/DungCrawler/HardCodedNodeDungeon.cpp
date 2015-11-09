@@ -8,6 +8,20 @@ HardCodedNodeDungeon::~HardCodedNodeDungeon() {
 
 }
 
+//	N = Normaal
+//	H = Trap omhoog
+//	C = Current position
+//	. = Niet bezocht
+//	~= Ingestort
+//	
+//	.	.	.	.	.
+//
+//	.	E	5	.	.
+//		|	|
+//	.	2 -	4 -	6	.
+//		|		|
+//	.	S	.	7	.
+//
 std::pair<Node*, Node*> HardCodedNodeDungeon::StartAndEndNode() {
 	Node *startNode = new Node("STN");
 	Node *node2 = new Node("N2");

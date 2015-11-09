@@ -5,27 +5,9 @@ Talisman::Talisman() {
 
 }
 
-//	N = Normaal
-//	H = Trap omhoog
-//	C = Current position
-//	. = Niet bezocht
-//	~= Ingestort
-//	
-//	.	.	.	.	.
-//
-//	.	E	5	.	.
-//		|	|
-//	.	2 -	4 -	6	.
-//		|		|
-//	.	S	.	7	.
-//
-void Talisman::breadthFirstSearch() {
-	std::pair<Node*, Node*> startAndEndNode = HardCodedNodeDungeon::StartAndEndNode();
-	std::cout << "BFS Distance Talisman: " << breadthFirstSearchReal(startAndEndNode.first, startAndEndNode.second) << std::endl;
 
-}
 
-int Talisman::breadthFirstSearchReal(Node* startNode, Node* goal) {
+int Talisman::breadthFirstSearch(Node* startNode, Node* goal) {
 	//breadth first
 	std::deque<Node*> queue = std::deque<Node*>();
 	std::unordered_set<Node*> visited = std::unordered_set<Node*>();

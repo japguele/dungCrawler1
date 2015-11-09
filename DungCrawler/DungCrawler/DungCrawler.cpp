@@ -12,7 +12,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	//delete mc;
 
 	Talisman t = Talisman();
-	t.breadthFirstSearch();
+	std::pair<Node*, Node*> startAndEndNode = HardCodedNodeDungeon::StartAndEndNode();
+	std::cout << "BFS Distance Talisman: " << t.breadthFirstSearch(startAndEndNode.first, startAndEndNode.second) << std::endl;
 
 	return 0;
 }

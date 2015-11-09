@@ -13,6 +13,6 @@ class Talisman
 {
 public:
 	Talisman();
-	void breadthFirstSearch();
-	int breadthFirstSearchReal(Node* startNode, Node* goal);
+	//void breadthFirstSearch();
+	int breadthFirstSearch(Node* startNode, Node* goal);
 };
