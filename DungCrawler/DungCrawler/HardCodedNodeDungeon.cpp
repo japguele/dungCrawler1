@@ -16,57 +16,77 @@ HardCodedNodeDungeon::~HardCodedNodeDungeon() {
 //	
 //	.	.	.	.	.
 //
-//	.	E	5	.	.
+//	.	E - 5	.	.
 //		|	|
 //	.	2 -	4 -	6	.
 //		|		|
 //	.	S	.	7	.
 //
 std::pair<Node*, Node*> HardCodedNodeDungeon::StartAndEndNode() {
-	Node *startNode = new Node("STN");
-	Node *node2 = new Node("N2");
-	Node *endNode = new Node("END");
-	Node *node4 = new Node("N4");
-	Node *node5 = new Node("N5");
-	Node *node6 = new Node("N6");
-	Node *node7 = new Node("N7");
+	int* w1 = new int;
+	int* w2 = new int;
+	int* w3 = new int;
+	int* w4 = new int;
+	int* w5 = new int;
+	int* w6 = new int;
+	int* w7 = new int;
 
-	/*startNode->setNorthNode(node2);
-	node2->setSouthNode(startNode);
-	node2->setNorthNode(endNode);
-	endNode->setSouthNode(node2);
-	node2->setEastNode(node4);
-	node4->setWestNode(node2);
-	node4->setNorthNode(node5);
-	node5->setSouthNode(node4);
-	node4->setEastNode(node6);
-	node6->setWestNode(node4);
-	node6->setSouthNode(node7);
-	node7->setNorthNode(node6);*/
+	*w1 = 1;
+	*w2 = 1;
+	*w3 = 1;
+	*w4 = 3;
+	*w5 = 1;
+	*w6 = 2;
+	*w7 = 1;
+	
+	Node *startNode = new Node("STN", w1);
+	Node *node2 = new Node("N2", w2);
+	Node *endNode = new Node("END", w3);
+	Node *node4 = new Node("N4", w4);
+	Node *node5 = new Node("N5", w5);
+	Node *node6 = new Node("N6", w6);
+	Node *node7 = new Node("N7", w7);
+
+	startNode->SetNorthNode(node2);
+	node2->SetSouthNode(startNode);
+	node2->SetNorthNode(endNode);
+	endNode->SetSouthNode(node2);
+	endNode->SetWestNode(node5);
+	node5->SetEastNode(endNode);
+	node2->SetEastNode(node4);
+	node4->SetWestNode(node2);
+	node4->SetNorthNode(node5);
+	node5->SetSouthNode(node4);
+	node4->SetEastNode(node6);
+	node6->SetWestNode(node4);
+	node6->SetSouthNode(node7);
+	node7->SetNorthNode(node6);
 
 	//node 7 & endNode swap test
 
-	startNode->setNorthNode(node2);
-	node2->setSouthNode(startNode);
-	node2->setNorthNode(node7); //swap
-	node7->setSouthNode(node2); //swap
-	node2->setEastNode(node4);
-	node4->setWestNode(node2);
-	node4->setNorthNode(node5);
-	node5->setSouthNode(node4);
-	node4->setEastNode(node6);
-	node6->setWestNode(node4);
-	node6->setSouthNode(endNode); //swap
-	endNode->setNorthNode(node6); //swap
+	//startNode->SetNorthNode(node2);
+	//node2->SetSouthNode(startNode);
+	//node2->SetNorthNode(node7); //swap
+	//node7->SetSouthNode(node2); //swap
+	//node7->SetEastNode(node5); //swap
+	//node5->SetWestNode(node7); //swap
+	//node2->SetEastNode(node4);
+	//node4->SetWestNode(node2);
+	//node4->SetNorthNode(node5);
+	//node5->SetSouthNode(node4);
+	//node4->SetEastNode(node6);
+	//node6->SetWestNode(node4);
+	//node6->SetSouthNode(endNode); //swap
+	//endNode->SetNorthNode(node6); //swap
 
 	//test
-	startNode->printAllNodes();
-	node2->printAllNodes();
-	endNode->printAllNodes();
-	node4->printAllNodes();
-	node5->printAllNodes();
-	node6->printAllNodes();
-	node7->printAllNodes();
+	startNode->PrintAllNodes();
+	node2->PrintAllNodes();
+	endNode->PrintAllNodes();
+	node4->PrintAllNodes();
+	node5->PrintAllNodes();
+	node6->PrintAllNodes();
+	node7->PrintAllNodes();
 
 	std::pair<Node*, Node*> startAndEndNode = std::pair<Node*, Node*>();
 	startAndEndNode.first = startNode;
