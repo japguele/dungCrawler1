@@ -1,5 +1,9 @@
 #pragma once
 #include "Node.h"
+#include <deque>
+#include <unordered_set>
+#include <unordered_map>
+#include <iostream>
 
 //	N = Normaal
 //	H = Trap omhoog
@@ -20,4 +24,5 @@ public:
 	HardCodedNodeDungeon();
 	~HardCodedNodeDungeon();
 	static std::pair<Node*, Node*> StartAndEndNode();
+	static int GetDungeonSize(Node* startNode); //pointer?
 };

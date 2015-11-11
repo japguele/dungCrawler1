@@ -1,5 +1,7 @@
 #include "Node.h"
-#include <unordered_map>
+#include "HardcodedNodeDungeon.h"
+#include <map>
+#include <random>
 
 class HandGrenade {
 public:
@@ -7,6 +9,5 @@ public:
 	~HandGrenade();
 	void Explosions(); //destroy edges in map
 private:
-	std::unordered_map<Node*, Node*> GetMinimumSpanningTree();
-
+	std::multimap<Node*, Node*>* GetMinimumSpanningTree(Node* startNode);
 };

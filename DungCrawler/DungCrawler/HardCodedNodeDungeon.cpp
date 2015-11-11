@@ -91,6 +91,7 @@ std::pair<Node*, Node*> HardCodedNodeDungeon::StartAndEndNode() {
 	std::pair<Node*, Node*> startAndEndNode = std::pair<Node*, Node*>();
 	startAndEndNode.first = startNode;
 	startAndEndNode.second = endNode;
+
 	return startAndEndNode;
 
 	/*delete startNode;
@@ -100,4 +101,30 @@ std::pair<Node*, Node*> HardCodedNodeDungeon::StartAndEndNode() {
 	delete node5;
 	delete node6;
 	delete node7;*/
+}
+
+int HardCodedNodeDungeon::GetDungeonSize(Node* startNode) {
+	//breadth first
+	std::deque<Node*> queue = std::deque<Node*>();
+	std::unordered_set<Node*> visited = std::unordered_set<Node*>();
+
+	queue.push_back(startNode);
+
+	while (!queue.empty()) {
+		Node* node = queue.front(); //get first element
+		visited.insert(node); //enqueue / push
+		std::cout << "current Node: " + node->GetIdentifier() << std::endl;
+
+		for (unsigned int i = 0; i < node->GetAdjacentNodes().size(); i++) {
+			std::cout << "adjacent Node: " + node->GetAdjacentNodes()[i]->GetIdentifier() << std::endl;
+			if (std::find(visited.begin(), visited.end(), node->GetAdjacentNodes()[i]) == visited.end()
+				&& std::find(queue.begin(), queue.end(), node->GetAdjacentNodes()[i]) == queue.end()) {
+				std::cout << "not inside queue & visited" << std::endl;
+				queue.push_back(node->GetAdjacentNodes()[i]);
+			}
+		}
+		queue.pop_front(); //dequeue / pop
+	}
+
+	return visited.size();
 }
