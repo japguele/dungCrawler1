@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "Enemy.h"
-
+#include <iostream>
 
 Enemy::Enemy()
 {
@@ -18,6 +18,20 @@ void Enemy::Init(int diff, std::string disc_){
 }
 int Enemy::getAttack(){
 	return offense;
+}
+
+string Enemy::GetDisc(){
+	return disc;
+}
+
+bool Enemy::TakeDamage(int damage){
+	health -= damage;
+	if (health <= 0){
+		cout << "I defeated this enemy, I received 50 experience." << endl;
+		return true;
+	}
+	cout << "The enemy took " << damage << " damage and has " << health << " health left.\n";
+	return false;
 }
 
 Enemy::~Enemy()

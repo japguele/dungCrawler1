@@ -27,6 +27,7 @@ public:
 	void RandomChambersArround(Chamber* cham, int north, int south, int west, int east);
 	Chamber* RandomChamberDirection(Chamber* cham, Direction d);
 
+	Array3D* GetArray3D();
 
 private:
 	EnemyFactory fac;

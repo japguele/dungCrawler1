@@ -13,8 +13,10 @@ void MainController::Run(){
 	while (true){
 		string inputString;
 		cout << "Please tell me what to do\n";
-		getline(cin, inputString);
-		handler->Handle(inputString);
+			getline(cin, inputString);
+			if (!inputString.empty()){
+				handler->Handle(inputString);
+			}
 	}
 	//Run();
 }

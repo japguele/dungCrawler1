@@ -42,6 +42,10 @@ ChamberFactory::ChamberFactory()
 	srand(t);
 }
 
+Array3D* ChamberFactory::GetArray3D(){
+	return ray;
+}
+
 
 Chamber* ChamberFactory::CreateChambers(int ammount){
 
@@ -186,7 +190,7 @@ Chamber* ChamberFactory::CreateChamber(Level* l, int xpos, int ypos){
 	}
 	string discription = "You enter a " + size[rand() % 3] + light[rand() % 3] + chambertype[rand() % 10] + "in the room you see " + objects[rand() % 10];
 	counter = counter + 1;
-	cout << counter;
+	//cout << counter;
 	Enemy* en = nullptr;
 	if (rand() % 3 > 1){
 		en = fac.createEnemy(UnitType::Enemy, l);

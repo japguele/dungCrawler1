@@ -14,6 +14,8 @@ public:
 	virtual Enemy* createEnemy();
 	int getAttack();
 	void Init(int, std::string);
+	std::string GetDisc();
+	bool TakeDamage(int);
 };
 
 

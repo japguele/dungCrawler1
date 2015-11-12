@@ -4,7 +4,7 @@
 #include "Direction.h"
 #include <string>
 #include "Enemy.h"
-
+#include <array>
 
 
 class Chamber
@@ -20,11 +20,14 @@ public:
 	Chamber* GetChamberInDirection(Direction);
 	int GetXpos();
 	int GetYpos();
-	std::string getDescription();
+	std::string getDescription() { return description; }
 
 	Enemy* GetEnemy();
 
-	void AttackEnemy(int);
+	bool AttackEnemy(int);
+
+	std::array<bool, 4> GetExits();
+
 private:
 	Enemy* enemy;
 	int xpos;
@@ -36,5 +39,6 @@ protected:
 	Chamber* east;
 	Chamber* west;
 	Chamber* south;
+	std::array<bool, 4> exits;
 };
 

@@ -8,7 +8,7 @@ public:
 	int GetHealth();
 	int GetOffense();
 	int GetDefense();
-	void TakeDamage(int);
+	virtual bool TakeDamage(int);
 protected:
 	int health;
 	int level;

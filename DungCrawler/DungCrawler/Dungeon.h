@@ -9,8 +9,9 @@ public:
 	Dungeon(int);
 	~Dungeon();
 	Hero* GetHero();
+	ChamberFactory* GetChamberFactory();
 private:
-	ChamberFactory cf;
+	ChamberFactory* cf;
 	Chamber* startChamber;
 	Hero* hero;
 };

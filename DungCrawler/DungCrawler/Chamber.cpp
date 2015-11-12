@@ -51,18 +51,26 @@ void Chamber::SetChamberInDirection(Chamber* cham, Direction dir){
 	case Direction::North:
 		north = cham;
 		cham->south = this;
+		exits[0] = true;
+		//cham->south->exits[2] = true;
 		break;
 	case Direction::South:
 		south = cham;
 		cham->north = this;
+		exits[2] = true;
+		//cham->north->exits[0] = true;
 		break;
 	case Direction::West:
 		west = cham;
 		cham->east = this;
+		exits[3] = true;
+		//cham->east->exits[1] = true;
 		break;
 	case Direction::East:
 		east = cham;
 		cham->west = this;
+		exits[1] = true;
+		//cham->west->exits[3] = true;
 		break;
 	default:
 		break;
@@ -79,8 +87,19 @@ int Chamber::GetYpos(){
 	return ypos;
 }
 
-void Chamber::AttackEnemy(int damage){
+bool Chamber::AttackEnemy(int damage){
 	//attack enemy
+	if (enemy->TakeDamage(damage)){
+		enemy = nullptr;
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+array<bool,4> Chamber::GetExits(){
+	return exits;
 }
 
 

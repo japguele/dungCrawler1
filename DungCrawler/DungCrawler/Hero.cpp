@@ -46,6 +46,7 @@ void Hero::DrinkPotion(int pot){
 
 void Hero::SetCurrentChamber(Chamber* chamber){
 	currentChamber = chamber;
+	cout << currentChamber->getDescription() << endl;
 }
 
 int Hero::GetExperience(){
@@ -57,13 +58,29 @@ Chamber* Hero::GetChamber(){
 }
 
 void Hero::Attack(){
-	currentChamber->AttackEnemy(offense);
+	if (currentChamber->AttackEnemy(offense)){
+		GainExp(50);
+	}
+	else {
+		if (!TakeDamage(currentChamber->GetEnemy()->getAttack())){
+			//exit game
+		}
+	}
 }
 
 void Hero::Magic(){
 	int ownDamage = rand() % 10 + 1;
-	TakeDamage(ownDamage);
-	currentChamber->AttackEnemy(offense);
+	if (!TakeDamage(ownDamage)){
+		//killed yourself
+	}
+	if (currentChamber->AttackEnemy(offense)){
+		GainExp(50);
+	}
+	else {
+		if (!TakeDamage(currentChamber->GetEnemy()->getAttack())){
+			//exit game
+		}
+	}
 }
 void Hero::RunAway(){
 
