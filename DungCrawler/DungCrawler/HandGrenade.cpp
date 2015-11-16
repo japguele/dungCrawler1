@@ -22,6 +22,7 @@ std::multimap<Node*, Node*>* HandGrenade::GetMinimumSpanningTree(Node* startNode
 	//set node/vertex in tree
 	std::multimap<Node*, Node*>* minimumSpanningTree = new std::multimap<Node*, Node*>();
 	std::vector<Node*> nodeList = std::vector<Node*>();
+	//std::vector<Node*> nodeListTemp = std::vector<Node*>();
 
 	nodeList.push_back(startNode); //starting node
 
@@ -34,9 +35,16 @@ std::multimap<Node*, Node*>* HandGrenade::GetMinimumSpanningTree(Node* startNode
 	while (nodeList.size() < dungeonSize) {
 		for (auto currentNode : nodeList) {
 			for (auto adjacentNode : currentNode->GetAdjacentNodes()) {
-				pair.first = adjacentNode; //key
-				pair.second = currentNode; //value
-				nodesAndEdgesToChooseFrom.insert(pair); //might not work cause not pointer
+				if (std::find(nodeList.begin(), nodeList.end(), adjacentNode) != nodeList.end()) {
+					/*contains node*/
+					//don't do stuff
+				}
+				else {
+					/*does not contain node*/
+					pair.first = adjacentNode; //key
+					pair.second = currentNode; //value
+					nodesAndEdgesToChooseFrom.insert(pair); //might not work cause not pointer
+				}
 			}
 		}
 
@@ -49,15 +57,8 @@ std::multimap<Node*, Node*>* HandGrenade::GetMinimumSpanningTree(Node* startNode
 
 		//check lowest weight node/edge
 		for (auto currentPair : nodesAndEdgesToChooseFrom) {
-			if (std::find(nodeList.begin(), nodeList.end(), currentPair.first) != nodeList.end()) {
-				/*contains node*/
-				//don't do stuff
-			}
-			else {
-				/*does not contain node*/
-				if (pair.second->GetWeight() > currentPair.first->GetWeight()) {
-					pair = currentPair;
-				}
+			if (pair.second->GetWeight() > currentPair.first->GetWeight()) {
+				pair = currentPair;
 			}
 		}
 		//set lowest weight node
@@ -68,6 +69,8 @@ std::multimap<Node*, Node*>* HandGrenade::GetMinimumSpanningTree(Node* startNode
 		pair.first = nullptr;
 		pair.second = nullptr;
 		nodesAndEdgesToChooseFrom.clear();
+
+		//repeat adding node/edge
 	}
 
 	return minimumSpanningTree;
