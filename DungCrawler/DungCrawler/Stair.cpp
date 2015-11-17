@@ -15,26 +15,61 @@ Stair::Stair(Level* lvl,int x,int y,Enemy* en) : Chamber(lvl,x,y,"stair",en)
 Stair::~Stair()
 {
 }
-void Stair::SetChamberInDirection(Chamber* chamber,Direction d){
-	switch (d)
+
+Chamber* Stair::GetChamberInDirection(Direction dir){
+	switch (dir)
 	{
 	case Direction::North:
-		north = chamber;
+		return north;
 		break;
 	case Direction::South:
-		south = chamber;
+		return south;
 		break;
 	case Direction::West:
-		west = chamber;
+		return west;
 		break;
 	case Direction::East:
-		east = chamber;
+		return east;
 		break;
 	case Direction::Up:
-		up = chamber;
+		return up;
 		break;
 	case Direction::Down:
-		down = chamber;
+		return down;
+		break;
+	default:
+		break;
+	}
+
+}
+void Stair::SetChamberInDirection(Chamber* cham,Direction dir){
+	switch (dir)
+	{
+	case Direction::North:
+		north = cham;
+		cham->south = this;
+		exits[0] = true;
+		break;
+	case Direction::South:
+		south = cham;
+		cham->north = this;
+		exits[2] = true;
+		break;
+	case Direction::West:
+		west = cham;
+		cham->east = this;
+		exits[3] = true;
+		break;
+	case Direction::East:
+		east = cham;
+		cham->west = this;
+		exits[1] = true;
+		break;
+	case Direction::Up:
+		up = cham;
+		break;
+	case Direction::Down:
+		down = cham;
 		break;
 	default:
 		break;

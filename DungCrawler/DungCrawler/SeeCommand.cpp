@@ -62,9 +62,11 @@ void SeeCommand::printMap(){
 		for (int y = 0; y < 10; y++){
 			PrintTopLine(game->GetChamberFactory()->GetArray3D()->get(x, y, z));
 		}
+		cout << endl;
 		for (int yy = 0; yy < 10; yy++){
 			PrintTopHallwayLine(game->GetChamberFactory()->GetArray3D()->get(x, yy, z));
 		}
+		cout << endl;
 	}
 	
 }

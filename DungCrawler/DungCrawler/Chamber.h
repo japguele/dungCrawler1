@@ -27,18 +27,18 @@ public:
 	bool AttackEnemy(int);
 
 	std::array<bool, 4> GetExits();
-
-private:
-	Enemy* enemy;
-	int xpos;
-	int ypos;
-	std::string description;
-protected:
 	Level* level;
 	Chamber* north;
 	Chamber* east;
 	Chamber* west;
 	Chamber* south;
 	std::array<bool, 4> exits;
+private:
+	Enemy* enemy;
+	int xpos;
+	int ypos;
+	std::string description;
+protected:
+
 };
 

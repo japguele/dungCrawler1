@@ -153,10 +153,10 @@ Chamber* ChamberFactory::RandomChamberDirection(Chamber* cham, Direction d){
 	switch (d)
 	{
 	case Direction::North:
-		x = x + 1;
+		x = x - 1;
 		break;
 	case Direction::South:
-		x = x - 1;
+		x = x + 1;
 		break;
 	case Direction::West:
 		y = y - 1;

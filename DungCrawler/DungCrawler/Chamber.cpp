@@ -36,7 +36,6 @@ Chamber* Chamber::GetChamberInDirection(Direction dir){
 		return east;
 		break;
 	default:
-		return north;
 		break;
 	}
 	

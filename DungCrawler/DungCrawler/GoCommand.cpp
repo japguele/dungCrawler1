@@ -3,7 +3,7 @@
 
 GoCommand::GoCommand()
 {
-	directions = unordered_map<string, Direction>({ { "north", Direction::North }, { "east", Direction::East }, { "south", Direction::South }, { "west", Direction::West }, { "up", Direction::Up }, { "east", Direction::Down } });
+	directions = unordered_map<string, Direction>({ { "north", Direction::North }, { "east", Direction::East }, { "south", Direction::South }, { "west", Direction::West }, { "up", Direction::Up }, { "down", Direction::Down } });
 }
  
 void GoCommand::Execute(string dir) {
