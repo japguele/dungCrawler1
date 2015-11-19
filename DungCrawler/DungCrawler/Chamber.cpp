@@ -67,6 +67,29 @@ Chamber* Chamber::GetChamberInDirection(Direction dir){
 	}
 	
 }
+std::string Chamber::Save(int x,int y,int z){
+//	int z = level->GetDepth();
+	bool n = (north);
+	bool e = (east);
+	bool s = (south);
+	bool w = (west);
+
+	std::string a = "|Chamber," + std::to_string(xpos) + "," + std::to_string(ypos) + "," + std::to_string(z) + "," + std::to_string(n) + "," + std::to_string(e) + "," + std::to_string(s) + "," + std::to_string(w) + "," + description;
+	if (enemy){
+		a = a + enemy->Save();
+	}
+
+	for (std::string::iterator it = a.begin(); it != a.end(); ++it) {
+		if (*it == ' ') {
+			*it = '_';
+		}
+	}
+
+
+	return a;
+
+
+}
 
 void Chamber::SetChamberInDirection(Chamber* cham, Direction dir){
 

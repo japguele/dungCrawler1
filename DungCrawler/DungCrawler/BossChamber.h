@@ -7,5 +7,7 @@ class BossChamber :
 public:
 	BossChamber(Level* lvl, int x, int y, Enemy* en);
 	~BossChamber();
+
+	std::string Save(int x, int y, int z);
 };
 

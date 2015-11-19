@@ -13,6 +13,7 @@ public:
 	virtual void SetChamberInDirection(Chamber*, Direction);
 	virtual Chamber* GetChamberInDirection(Direction);
 	std::string GetMapIcon();
+	virtual std::string Save(int x, int y, int z);
 private:
 	Chamber* up;
 	Chamber* down;

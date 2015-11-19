@@ -27,24 +27,24 @@ public:
 	bool AttackEnemy(int);
 
 	std::array<bool, 4> GetExits();
+	virtual std::string Save(int x, int y, int z);
 	Level* level;
 	Chamber* north;
 	Chamber* east;
 	Chamber* west;
 	Chamber* south;
 	std::array<bool, 4> exits;
-
-	void SetVisited();
 	bool GetVisited();
+	void SetVisited();
 	Trap* GetTrap();
 	void DefeatEnemy();
-private:
+protected:
 	Enemy* enemy;
 	int xpos;
 	int ypos;
 	std::string description;
 	Trap* trap;
-protected:
 	bool visited;
+	
 };
 

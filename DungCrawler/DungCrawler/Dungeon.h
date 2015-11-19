@@ -10,6 +10,11 @@ public:
 	~Dungeon();
 	Hero* GetHero();
 	ChamberFactory* GetChamberFactory();
+	void Save(std::string _name);
+	void Load(std::string _name);
+
+
+
 private:
 	ChamberFactory* cf;
 	Chamber* startChamber;
