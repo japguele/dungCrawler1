@@ -9,6 +9,7 @@
 #include <vector>
 #include <string>
 #include <ctime>
+#include <sstream>
 
 
 
@@ -27,8 +28,12 @@ public:
 	void RandomChambersArround(Chamber* cham, int north, int south, int west, int east);
 	Chamber* RandomChamberDirection(Chamber* cham, Direction d);
 
-
+	Array3D* GetArray3D();
+	void LinkChamberFromString(string a);
+	void CreateChamberFromString(string, vector<Level*> vec);
+	Chamber* CreateDungFromString(string);
 private:
+
 	EnemyFactory fac;
 	Array3D* ray;
 	int counter;

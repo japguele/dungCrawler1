@@ -9,8 +9,14 @@ public:
 	Dungeon(int);
 	~Dungeon();
 	Hero* GetHero();
+	ChamberFactory* GetChamberFactory();
+	void Save(std::string _name);
+	void Load(std::string _name);
+
+
+
 private:
-	ChamberFactory cf;
+	ChamberFactory* cf;
 	Chamber* startChamber;
 	Hero* hero;
 };

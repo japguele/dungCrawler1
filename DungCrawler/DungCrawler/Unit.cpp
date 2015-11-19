@@ -22,12 +22,14 @@ int Unit::GetDefense(){
 	return defence;
 }
 
-void Unit::TakeDamage(int damage){
+bool Unit::TakeDamage(int damage){
 	health -= damage;
 	if (health <= 0){
-		//gameover!!!
+		cout << "I have been beaten. Goodbye cruel world." << endl;
+		return false;
 	}
 	cout << "auch, I took " << damage << " damage and have " << health << " health left.\n";
+	return true;
 }
 
 

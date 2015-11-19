@@ -13,7 +13,7 @@ Array3D::Array3D(size_t xLength, size_t yLength, size_t zLength) : x_size{ xLeng
 	}
 
 
-	std::cout << " - " << xLength*yLength*zLength << " - ";
+	//std::cout << " - " << xLength*yLength*zLength << " - ";
 }
 Array3D::Array3D(){
 
@@ -90,7 +90,7 @@ void Array3D::put(Chamber* input, size_t x, size_t y, size_t z){
 }
 
 size_t Array3D::Index(size_t x, size_t y, size_t z) const{
-	std::cout << " - " << x_size * y_size * z + x_size * y + x << " - ";
+	//std::cout << " - " << x_size * y_size * z + x_size * y + x << " - ";
 	{ return x_size * y_size * z + x_size * y + x; }
 }
 
