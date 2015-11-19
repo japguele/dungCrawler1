@@ -23,10 +23,10 @@ public:
 	void RunAway();
 	void SetCurrentChamber(Chamber*);
 private:
-	unordered_map<string, Item*> backpack;
+	vector<Item*> backpack;
 	int experience;
 	string name;
 	Chamber* currentChamber;
-
+	Chamber* previousChamber;
 };
 

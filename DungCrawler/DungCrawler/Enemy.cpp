@@ -11,10 +11,10 @@ Enemy* Enemy::createEnemy(){
 }
 void Enemy::Init(int diff, std::string disc_){
 	disc = disc_;
-	health = 30 + (diff * 8);
+	health = 60 + (diff * 8);
 	level = diff;
-	offense = 3 + (diff * 1.5);
-	defence = 1 + (diff * 1.5);
+	offense = 10 + (diff * 2);
+	defence = 5 + (diff * 2);
 }
 int Enemy::getAttack(){
 	return offense;
@@ -25,12 +25,16 @@ string Enemy::GetDisc(){
 }
 
 bool Enemy::TakeDamage(int damage){
-	health -= damage;
+	int trueDamage = damage - defence;
+	if (trueDamage <= 0){
+		trueDamage = 0;
+	}
+	health -= trueDamage;
 	if (health <= 0){
-		cout << "I defeated this enemy, I received 50 experience." << endl;
+		cout << "The enemy took " << trueDamage << " damage and has been defeated.\n";
 		return true;
 	}
-	cout << "The enemy took " << damage << " damage and has " << health << " health left.\n";
+	cout << "The enemy took " << trueDamage << " damage and has " << health << " health left.\n";
 	return false;
 }
 

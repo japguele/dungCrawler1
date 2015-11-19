@@ -53,10 +53,18 @@ void SeeCommand::printSelf(){
 	cout << "My stats are: " << hero->GetOffense() << " offense, " << hero->GetDefense() << " defense.\n";
 	cout << "I have " << hero->GetHealth() << " health left." << endl;
 	cout << "My level is: " << hero->GetLevel() << "\n";
-	cout << "I need "<< (100 - hero->GetExperience())<<" more exp to level up: \n";
+	cout << "I need " << ((hero->GetLevel() * 100) - hero->GetExperience()) << " more exp to level up: \n";
 }
 
 void SeeCommand::printMap(){
+	cout << "[ ] = Undiscovered chamber" << endl;
+	cout << "[O] = Visted empty chamber" << endl;
+	cout << "[X] = You are here" << endl;
+	cout << "[S] = Visited stair room" << endl;
+	cout << "[M] = Visited Room with a monster" << endl;
+	cout << "[T] = Visited Room with a trap" << endl;
+	cout << "- = A hallway east/west" << endl;
+	cout << "| = A hallway north/south" << endl;
 	size_t z = game->GetHero()->GetChamber()->GetLevel()->GetDepth();
 	for (int x = 0; x < 10; x++){
 		for (int y = 0; y < 10; y++){
@@ -73,18 +81,13 @@ void SeeCommand::printMap(){
 
 void SeeCommand::PrintTopLine(Chamber* chamber){
 	if (chamber != nullptr){
-		if (/*chamber->HasViseted()*/true){
-			if (game->GetHero()->GetChamber() == chamber){
-				cout << "[X]";
-			}
-			else {
-				cout << "[O]";
-			}
+		if (game->GetHero()->GetChamber() == chamber){
+			cout << "[X]";
 		}
 		else {
-			cout << "[ ]";
+			cout << "["<<chamber->GetMapIcon()<<"]";
 		}
-		if (chamber->GetChamberInDirection(Direction::East)){
+		if (chamber->GetChamberInDirection(Direction::East) && chamber->GetChamberInDirection(Direction::East)->GetVisited()){
 			cout << "-";
 		}
 		else {
@@ -98,7 +101,7 @@ void SeeCommand::PrintTopLine(Chamber* chamber){
 
 void SeeCommand::PrintTopHallwayLine(Chamber* chamber){
 	if (chamber != nullptr){
-		if (chamber->GetChamberInDirection(Direction::South)){
+		if (chamber->GetChamberInDirection(Direction::South) && chamber->GetChamberInDirection(Direction::South)->GetVisited()){
 			cout << " |  ";
 		}
 		else {
@@ -113,7 +116,7 @@ void SeeCommand::PrintTopHallwayLine(Chamber* chamber){
 void SeeCommand::printRoom(){
 	string description = game->GetHero()->GetChamber()->getDescription();
 	Enemy* enemy = game->GetHero()->GetChamber()->GetEnemy();
-	/*Trap* trap = game->GetHero()->GetChamber()->GetTrap();*/
+	Trap* trap = game->GetHero()->GetChamber()->GetTrap();
 	Level* level = game->GetHero()->GetChamber()->GetLevel();
 	Chamber* chamber = game->GetHero()->GetChamber();
 	array<bool, 4> exits = chamber->GetExits();
@@ -126,12 +129,12 @@ void SeeCommand::printRoom(){
 	else {
 		cout << "This chamber contains no enemy.\n";
 	}
-	/*if (trap != nullptr){
-		cout << "This room con1tains the following trap: " << trap << ".\n";
+	if (trap != nullptr){
+		cout << "This room contains the following trap: " << trap->GetDescription() << ".\n";
 	}
 	else {
 		cout << "This chamber contains no trap.\n";
-	}*/
+	}
 	if (level != nullptr){
 		cout << "This chamber is on level: " << level->GetDepth() << ".\n";
 	}

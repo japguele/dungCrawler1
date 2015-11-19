@@ -11,8 +11,7 @@ void QuitCommand::Execute(){
 	string input;
 	cin >> input;
 	if (input == "yes"){
-		//game.quit();
-		//exit(0);
+		exit(0);
 	}
 }
 

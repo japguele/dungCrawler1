@@ -8,23 +8,39 @@ GoCommand::GoCommand()
  
 void GoCommand::Execute(string dir) {
 	Chamber* currentChamber = game->GetHero()->GetChamber();
-	if (currentChamber->GetChamberInDirection(directions.at(dir)) != nullptr){
-		if (currentChamber->GetEnemy() == nullptr){
-			cout << "I went " << dir << ".\n";
-			game->GetHero()->SetCurrentChamber(currentChamber->GetChamberInDirection(directions.at(dir)));
+	if (CheckDirection(dir)){
+		if (currentChamber->GetChamberInDirection(directions.at(dir)) != nullptr){
+			if (currentChamber->GetEnemy() == nullptr){
+				if (currentChamber->GetTrap() != nullptr){
+					game->GetHero()->TakeDamage(currentChamber->GetTrap()->GetDamageValue());
+				}
+				cout << "I went " << dir << ".\n";
+				game->GetHero()->SetCurrentChamber(currentChamber->GetChamberInDirection(directions.at(dir)));
+			}
+			else {
+				cout << "Their is an enemy blocking yout path. you have to defaeat it before you can go further." << endl;
+			}
 		}
 		else {
-			cout << "Their is an enemy blocking yout path. you have to defaeat it before you can go further." << endl;
+			cout << "Their is no path in this direction.\n";
 		}
 	}
 	else {
-		cout << "Their is no path in this direction.\n";
+		cout << "Can you give me a real direction? (north, east, south, west)"<< endl;
 	}
-	
 }
 
 void GoCommand::Execute() {
 	cout << "Can you also give me a direction please.\n";
+}
+
+bool GoCommand::CheckDirection(std::string dir){
+	for (const auto& dire : directions) {
+		if (dire.first == dir){
+			return true;
+		}
+	}
+	return false;
 }
 
 GoCommand::~GoCommand()

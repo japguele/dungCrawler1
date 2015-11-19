@@ -6,7 +6,7 @@
 
 
 
-Stair::Stair(Level* lvl,int x,int y,Enemy* en) : Chamber(lvl,x,y,"stair",en)
+Stair::Stair(Level* lvl,int x,int y,Enemy* en) : Chamber(lvl,x,y,"stair",en, nullptr)
 {
 	
 }
@@ -14,6 +14,14 @@ Stair::Stair(Level* lvl,int x,int y,Enemy* en) : Chamber(lvl,x,y,"stair",en)
 
 Stair::~Stair()
 {
+}
+string Stair::GetMapIcon(){
+	if (visited){
+		return "S";
+	}
+	else {
+		return " ";
+	}
 }
 
 Chamber* Stair::GetChamberInDirection(Direction dir){
