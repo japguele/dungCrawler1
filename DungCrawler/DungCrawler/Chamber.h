@@ -27,13 +27,14 @@ public:
 	bool AttackEnemy(int);
 
 	std::array<bool, 4> GetExits();
-
+	virtual std::string Save(int x, int y, int z);
 private:
+
+protected:
 	Enemy* enemy;
 	int xpos;
 	int ypos;
 	std::string description;
-protected:
 	Level* level;
 	Chamber* north;
 	Chamber* east;
