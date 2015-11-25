@@ -83,7 +83,7 @@ void Dungeon::LoadPlayer(std::string _name){
 	if (hero){
 		delete hero;
 	}
-	unordered_map<string, Item*> backpack = unordered_map<string, Item*>();
+	vector<Item*> backpack = vector<Item*>();
 	int x = 6;
 	while (vect.size() < x){
 		//backpack.insert(vect[x], new Item(vec[x + 1]));
