@@ -1,23 +1,24 @@
 #include "stdafx.h"
 #include "Dungeon.h"
-#include <iostream>
-#include <fstream>
+
 
 
 Dungeon::Dungeon(int chambers) : cf(new ChamberFactory())
 {
+
 	hero = new Hero("Jark");
 	startChamber = cf->CreateChambers(chambers);
 	hero->SetCurrentChamber(startChamber);
 	//Save("heyo");
 	//Load("heyo");
+
 }
 
 Hero* Dungeon::GetHero(){
 	return hero;
 }
 
-ChamberFactory* Dungeon::GetChamberFactory(){
+ChamberFactory* Dungeon::GetChamberFactory(){	
 	return cf;
 }
 void Dungeon::Save(std::string _name){
@@ -41,7 +42,7 @@ void Dungeon::Load(std::string _name){
 
 	loadFile.open(_name + ".txt", ifstream::in);
 
-	cout << "The file contained: ";
+	cout << "loading file ...";
 	std::stringstream ss;
 	ss << loadFile.rdbuf();
 	std::string  i;
@@ -53,12 +54,47 @@ void Dungeon::Load(std::string _name){
 
 		
 	
-	cout << "" << endl;
+	cout << "done" << endl;
 
 	loadFile.close();
 
 }
+void Dungeon::SavePlayer(std::string _name){
+	
+	if (hero){
+		ofstream saveFile(_name + ".txt");
+		saveFile << hero->SavePlayer();
+	}
+	
+}
+void Dungeon::LoadPlayer(std::string _name){
+	ifstream loadFile;
+	loadFile.open(_name + ".txt", ifstream::in);
+	cout << "loading file ...";
+	std::stringstream ss;
+	ss << loadFile.rdbuf();
+	std::vector<string> vect;
+	string i;
+	while (ss.good())
+	{
+		getline(ss, i, ',');
+		vect.push_back(i);
+	}
+	if (hero){
+		delete hero;
+	}
+	unordered_map<string, Item*> backpack = unordered_map<string, Item*>();
+	int x = 6;
+	while (vect.size() < x){
+		//backpack.insert(vect[x], new Item(vec[x + 1]));
+			x++;
+	}
+	hero = new Hero(vect[0], atoi(vect[1].c_str()), atoi(vect[2].c_str()), atoi(vect[3].c_str()), atoi(vect[4].c_str()), atoi(vect[5].c_str()), backpack);
 
+	cout << "done" << endl;
+
+	loadFile.close();
+}
 
 
 

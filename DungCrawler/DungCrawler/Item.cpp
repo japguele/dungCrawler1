@@ -21,3 +21,6 @@ string Item::GetDescription(){
 Item::~Item()
 {
 }
+std::string Item::Save(){
+	return "";
+}

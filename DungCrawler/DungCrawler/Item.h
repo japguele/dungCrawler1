@@ -12,5 +12,6 @@ public:
 	string GetDescription();
 	virtual void UseItem(Hero*);
 	virtual ~Item();
+	virtual std::string Save();
 };
 
