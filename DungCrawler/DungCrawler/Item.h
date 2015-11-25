@@ -4,9 +4,8 @@ class Hero;
 class Item
 {
 protected:
-	Hero* hero;
 	std::string name;
-	std::string decription;
+	std::string description;
 public:
 	Item();
 	string GetName();

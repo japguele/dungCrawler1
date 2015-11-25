@@ -1,5 +1,7 @@
 #pragma once
 #include "Command.h"
+#include "Item.h"
+#include <vector>
 class UseCommand :
 	public Command
 {

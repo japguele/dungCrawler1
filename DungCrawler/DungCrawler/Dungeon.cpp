@@ -5,14 +5,13 @@
 
 Dungeon::Dungeon(int chambers) : cf(new ChamberFactory())
 {
-	LoadPlayer("aap");
-	//startChamber = cf->CreateChambers(chambers);
-	//hero->SetCurrentChamber(startChamber);	
-	int x = 0;
-	int y = 0;
+
+	hero = new Hero("Jark");
+	startChamber = cf->CreateChambers(chambers);
+	hero->SetCurrentChamber(startChamber);
 	//Save("heyo");
-	Load("heyo");
-	
+	//Load("heyo");
+
 }
 
 Hero* Dungeon::GetHero(){

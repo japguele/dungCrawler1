@@ -24,6 +24,8 @@ public:
 	void RunAway();
 	void SetCurrentChamber(Chamber*);
 	string SavePlayer();
+	vector<Item*> GetBackpack();
+
 private:
 	vector<Item*> backpack;
 	int experience;
