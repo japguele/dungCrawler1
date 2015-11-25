@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "Hero.h"
-
+#include "potion.h"
 Hero::Hero(){
 
 }
@@ -19,30 +19,35 @@ Hero::Hero(string n, int _health, int _level, int _off, int _def, int _exp, unor
 Hero::Hero(string n)
 {
 	name = n;
-	health = 100;
+	health = 50;
 	level = 1;
 	offense = 50;
 	defence = 10;
 	experience = 0;
-	backpack = unordered_map<string, Item*>();
+	backpack = vector<Item*>();
+	Potion* pot = new Potion(30, "HealthPotion", "I drink this weird smelling potion");
+	Potion* pot2 = new Potion(30, "HealthPotion", "I drink this weird smelling potion");
+	backpack.push_back(pot);
+	backpack.push_back(pot2);
 }
 void Hero::AddItem(Item* item){
-	backpack.insert({ item->name, item });
+	//backpack.insert({ item->name, item });
 }
 
 void Hero::LevelUp(){
 	level++;
 	health += 20;
 	offense += 10;
-	defence += 10;
+	defence += 5;
 	experience = 0;
 }
 
 void Hero::GainExp(int exp){
+	cout << "I gained " << exp << "experience!" << endl;
 	experience += exp;
-	if (experience >= 100){
+	if (experience >= (level*100)){
 		cout << "Congratiolations, you leveled up!\n";
-		int tempExp = experience - 100;
+		int tempExp = experience - (level * 100);
 		LevelUp();
 		GainExp(tempExp);
 	}
@@ -56,7 +61,9 @@ void Hero::DrinkPotion(int pot){
 }
 
 void Hero::SetCurrentChamber(Chamber* chamber){
+	previousChamber = currentChamber;
 	currentChamber = chamber;
+	currentChamber->SetVisited();
 	cout << currentChamber->getDescription() << endl;
 }
 
@@ -70,31 +77,48 @@ Chamber* Hero::GetChamber(){
 
 void Hero::Attack(){
 	if (currentChamber->AttackEnemy(offense)){
-		GainExp(50);
+		int baseExp = rand() % 20+40;
+		int bonusExp = currentChamber->GetEnemy()->GetLevel() * 5;
+		currentChamber->DefeatEnemy();
+		GainExp(baseExp+bonusExp);
 	}
 	else {
 		if (!TakeDamage(currentChamber->GetEnemy()->getAttack())){
 			//exit game
+			exit(0);
 		}
 	}
 }
 
 void Hero::Magic(){
 	int ownDamage = rand() % 10 + 1;
-	if (!TakeDamage(ownDamage)){
-		//killed yourself
+	health = health - ownDamage;
+	if (health <= 0){
+		exit(0);
 	}
-	if (currentChamber->AttackEnemy(offense)){
-		GainExp(50);
+	cout << "By using magic, I took " << ownDamage << " damage and have " << health << " health left.\n";
+	if (currentChamber->AttackEnemy(offense+(offense/2))){
+		int baseExp = rand() % 20 + 40;
+		int bonusExp = currentChamber->GetEnemy()->GetLevel() * 5;
+		currentChamber->DefeatEnemy();
+		GainExp(baseExp + bonusExp);
 	}
 	else {
 		if (!TakeDamage(currentChamber->GetEnemy()->getAttack())){
 			//exit game
+			exit(0);
 		}
 	}
 }
 void Hero::RunAway(){
-
+	if (previousChamber != nullptr){
+		TakeDamage(currentChamber->GetEnemy()->getAttack());
+		currentChamber = previousChamber;
+		cout << "I fled to the previous chamber." << endl;
+	}
+	else {
+		cout << "I can escape in this room." << endl;
+	}
 }
 
 string Hero::SavePlayer(){

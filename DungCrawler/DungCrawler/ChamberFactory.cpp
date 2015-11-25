@@ -38,6 +38,14 @@ ChamberFactory::ChamberFactory()
 	objectsloc[0] = "on the floor";
 	objectsloc[1] = "against the wall";
 	objectsloc[2] = "in the corner";
+
+	traps[0] = "Spiketrap";
+	traps[1] = "Darttrap";
+	traps[2] = "ArrowTrap";
+	traps[3] = "Triptrap";
+	traps[4] = "a Very painful trap";
+
+
 	time_t t = time(0);   // get time now
 	srand(t);
 }
@@ -195,7 +203,12 @@ Chamber* ChamberFactory::CreateChamber(Level* l, int xpos, int ypos){
 	if (rand() % 3 > 1){
 		en = fac.createEnemy(UnitType::Enemy, l);
 	}
-	c = new Chamber(l, xpos, ypos, discription, en);
+	Trap* t = nullptr;
+	if (rand() % 3 > 1){
+		t = new Trap();
+		t->Init(l->GetDepth(), traps[rand() % 5]);
+	}
+	c = new Chamber(l, xpos, ypos, discription, en, t);
 	
 	ray->put(c, xpos, ypos, l->GetDepth());
 	return c;
@@ -277,7 +290,7 @@ void ChamberFactory::CreateChamberFromString(string a, vector<Level*> vec){
 	
 	}
 	if (type == "Chamber"){
-		ray->put(new Chamber(vec[z], xpos, ypos, disc, enemy),xpos, ypos, z);
+		ray->put(new Chamber(vec[z], xpos, ypos, disc, enemy,nullptr),xpos, ypos, z);
 
 		}
 	else 	if (type == "Stair"){

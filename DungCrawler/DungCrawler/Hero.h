@@ -25,10 +25,10 @@ public:
 	void SetCurrentChamber(Chamber*);
 	string SavePlayer();
 private:
-	unordered_map<string, Item*> backpack;
+	vector<Item*> backpack;
 	int experience;
 	string name;
 	Chamber* currentChamber;
-
+	Chamber* previousChamber;
 };
 

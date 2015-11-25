@@ -11,6 +11,8 @@ public:
 	~Stair();
 	Stair(Level* lvl, int x, int y,Enemy* en);
 	virtual void SetChamberInDirection(Chamber*, Direction);
+	virtual Chamber* GetChamberInDirection(Direction);
+	std::string GetMapIcon();
 	virtual std::string Save(int x, int y, int z);
 private:
 	Chamber* up;

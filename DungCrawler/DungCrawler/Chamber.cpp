@@ -2,7 +2,7 @@
 #include "Chamber.h"
 
 
-Chamber::Chamber(Level* lvl,int x,int y,std::string dis,Enemy* en)
+Chamber::Chamber(Level* lvl,int x,int y,std::string dis,Enemy* en, Trap* t)
 {
 	enemy = en;
 	xpos = x;
@@ -13,12 +13,38 @@ Chamber::Chamber(Level* lvl,int x,int y,std::string dis,Enemy* en)
 	south = nullptr;
 	west = nullptr;
 	east = nullptr;
-	if (rand() % 3 > 2){
-		
+	trap = nullptr;
+	if (t){
+		trap = t;
 	}
 }
 Enemy* Chamber::GetEnemy(){
 	return enemy;
+}
+
+void Chamber::SetVisited(){
+	visited = true;
+}
+
+bool Chamber::GetVisited(){
+	return visited;
+}
+Trap* Chamber::GetTrap(){
+	return trap;
+}
+string Chamber::GetMapIcon(){
+	if (visited && enemy != nullptr){
+		return "M";
+	}
+	else if (visited && trap != nullptr){
+		return "T";
+	}
+	else if (visited){
+		return "0";
+	}
+	else {
+		return " ";
+	}
 }
 Chamber* Chamber::GetChamberInDirection(Direction dir){
 	switch (dir)
@@ -36,7 +62,7 @@ Chamber* Chamber::GetChamberInDirection(Direction dir){
 		return east;
 		break;
 	default:
-		return north;
+		return nullptr;
 		break;
 	}
 	
@@ -110,10 +136,13 @@ int Chamber::GetYpos(){
 	return ypos;
 }
 
+void Chamber::DefeatEnemy(){
+	enemy = nullptr;
+}
+
 bool Chamber::AttackEnemy(int damage){
 	//attack enemy
 	if (enemy->TakeDamage(damage)){
-		enemy = nullptr;
 		return true;
 	}
 	else {

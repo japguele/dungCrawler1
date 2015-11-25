@@ -5,19 +5,19 @@
 #include <string>
 #include "Enemy.h"
 #include <array>
-
+#include "Trap.h"
 
 class Chamber
 {
 public:
-	
-	Chamber(Level*,int,int,std::string,Enemy*);
+	virtual std::string GetMapIcon();
+	Chamber(Level*,int,int,std::string,Enemy*,Trap*);
 	virtual ~Chamber();
 	virtual void SetChamberInDirection(Chamber*, Direction);
 	
 	
 	Level* GetLevel();
-	Chamber* GetChamberInDirection(Direction);
+	virtual Chamber* GetChamberInDirection(Direction);
 	int GetXpos();
 	int GetYpos();
 	std::string getDescription() { return description; }
@@ -28,18 +28,23 @@ public:
 
 	std::array<bool, 4> GetExits();
 	virtual std::string Save(int x, int y, int z);
-private:
-
-protected:
-	Enemy* enemy;
-	int xpos;
-	int ypos;
-	std::string description;
 	Level* level;
 	Chamber* north;
 	Chamber* east;
 	Chamber* west;
 	Chamber* south;
 	std::array<bool, 4> exits;
+	bool GetVisited();
+	void SetVisited();
+	Trap* GetTrap();
+	void DefeatEnemy();
+protected:
+	Enemy* enemy;
+	int xpos;
+	int ypos;
+	std::string description;
+	Trap* trap;
+	bool visited;
+	
 };
 

@@ -42,7 +42,7 @@ private:
 	string chambertype[10];
 	string objects[10];
 	string objectsloc[3];
-
+	string traps[5];
 
 
 
