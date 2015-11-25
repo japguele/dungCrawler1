@@ -306,9 +306,9 @@ Chamber* ChamberFactory::CreateDungFromString(string a){
 		}
 	}
 	vector<Level*> vec = vector<Level*>();
-stringstream ss(a);
-bool first = true;
-while (getline(ss, temp, '|'))
+	stringstream ss(a);
+	bool first = true;
+	while (getline(ss, temp, '|'))
 	{
 		if (first){
 			vector<string> vecop = vector<string>();

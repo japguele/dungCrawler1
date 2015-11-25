@@ -2,27 +2,46 @@
 #include "EnemyFactory.h"
 #include "Enemy.h"
 
+
 EnemyFactory::EnemyFactory()
 {
+
+	ifstream loadFile;
+
+	loadFile.open("Enemy.txt", ifstream::in);
+
+	cout << "The file contained: ";
+	std::stringstream ss;
+	ss << loadFile.rdbuf();
+	std::string  i;
+	string temp = "";
+	int x = 0;
+	while (getline(ss, temp, '|'))
+	{
+		std::stringstream aa;
+		aa << temp;
+		string temp2 = "";
+		while (getline(aa, temp2, ',')){
+			if (x == 1){
+				type.push_back(temp2);
+			}
+			else if (x == 2){
+				teeth.push_back(temp2);
+			}
+			else if (x == 3){
+				find.push_back(temp2);
+			}
+		}
+		x++;
+	}
+
+
 	units = std::unordered_map<UnitType, Enemy>{
 			{ UnitType::Enemy, Enemy() }
 		
 	};
 
-	type[0] = "gnoll ";
-	type[1] = "boar ";
-	type[2] = "rat ";
-	type[3] = "wolf ";
-	type[4] = "turtle ";
 
-
-	teeth[0] = "small ";
-	teeth[1] = "big ";
-	teeth[2] = "nice ";
-
-	find[0] = "see's you ";
-	find[1] = "smells you ";
-	find[2] = "hears you ";
 
 }
 

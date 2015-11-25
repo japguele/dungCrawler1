@@ -1,0 +1,1 @@
+|gnoll ,boar ,rat ,wolf ,turtle |small ,big ,nice |see's you ,smells you ,hears you 

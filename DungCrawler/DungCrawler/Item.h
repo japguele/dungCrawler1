@@ -6,5 +6,6 @@ public:
 	string name;
 	Item();
 	virtual ~Item();
+	virtual std::string Save();
 };
 

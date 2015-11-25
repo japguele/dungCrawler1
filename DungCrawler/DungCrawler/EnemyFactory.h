@@ -5,6 +5,9 @@
 #include "UnitType.h"
 #include "Level.h"
 #include <string>
+#include <iostream>
+#include <fstream>
+#include <sstream>
 class Enemy;
 class EnemyFactory
 {
@@ -12,9 +15,9 @@ public:
 	EnemyFactory();
 	~EnemyFactory();
 	Enemy* createEnemy(UnitType,Level* level);
-	std::string type[5];
-	std::string teeth[3];
-	std::string find[3];
+	std::vector<std::string> type;
+	std::vector<std::string>  teeth;
+	std::vector<std::string>  find;
 
 private:
 	std::unordered_map<UnitType, Enemy> units;

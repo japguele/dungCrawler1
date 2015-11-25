@@ -12,6 +12,8 @@ public:
 	ChamberFactory* GetChamberFactory();
 	void Save(std::string _name);
 	void Load(std::string _name);
+	void SavePlayer(std::string _name);
+	void LoadPlayer(std::string _name);
 
 
 

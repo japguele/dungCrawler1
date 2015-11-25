@@ -10,6 +10,7 @@ class Hero :
 {
 public:
 	Hero();
+	Hero(string n, int _health, int _level, int _off, int _def, int _exp, unordered_map<string, Item*> _backpack);
 	Hero(string);
 	~Hero();
 	void AddItem(Item*);
@@ -22,6 +23,7 @@ public:
 	void Magic();
 	void RunAway();
 	void SetCurrentChamber(Chamber*);
+	string SavePlayer();
 private:
 	unordered_map<string, Item*> backpack;
 	int experience;
