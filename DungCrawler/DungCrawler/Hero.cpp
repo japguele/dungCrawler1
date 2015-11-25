@@ -5,7 +5,7 @@ Hero::Hero(){
 
 }
 
-Hero::Hero(string n, int _health, int _level, int _off, int _def, int _exp, unordered_map<string, Item*> _backpack)
+Hero::Hero(string n, int _health, int _level, int _off, int _def, int _exp, vector<Item*> _backpack)
 {
 	name = n;
 	health = _health;
@@ -128,7 +128,7 @@ void Hero::RunAway(){
 string Hero::SavePlayer(){
 	string save = name + "," + std::to_string(health) + "," + std::to_string(level) + "," + std::to_string(offense) + "," + std::to_string(defence) + "," + std::to_string(experience);
 	for (auto kv : backpack) {
-		save = save + "," + kv.second->Save();		
+		save = save + "," + kv->Save();
 	}
 
 	return save;
