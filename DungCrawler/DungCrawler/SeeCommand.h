@@ -4,6 +4,8 @@
 class SeeCommand :
 	public Command
 {
+private:
+	bool cheatmode = false;
 public:
 	SeeCommand();
 	virtual void Execute(string);

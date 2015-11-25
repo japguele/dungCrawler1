@@ -32,15 +32,26 @@ bool Chamber::GetVisited(){
 Trap* Chamber::GetTrap(){
 	return trap;
 }
-string Chamber::GetMapIcon(){
-	if (visited && enemy != nullptr){
-		return "M";
-	}
-	else if (visited && trap != nullptr){
+string Chamber::GetMapIconCheatmode(){
+	if (trap != nullptr){
 		return "T";
 	}
+	else if (enemy != nullptr){
+		return "M";
+	}
+	else {
+		return "O";
+	}
+}
+string Chamber::GetMapIcon(){
+	if (visited && trap != nullptr){
+		return "T";
+	}
+	else if (visited && enemy != nullptr){
+		return "M";
+	} 
 	else if (visited){
-		return "0";
+		return "O";
 	}
 	else {
 		return " ";

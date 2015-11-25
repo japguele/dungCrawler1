@@ -22,6 +22,7 @@ public:
 	void Magic();
 	void RunAway();
 	void SetCurrentChamber(Chamber*);
+	vector<Item*> GetBackpack();
 private:
 	vector<Item*> backpack;
 	int experience;

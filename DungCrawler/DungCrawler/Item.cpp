@@ -10,6 +10,13 @@ void Item::UseItem(Hero* her){
 
 }
 
+string Item::GetName(){
+	return name;
+}
+string Item::GetDescription(){
+	return description;
+}
+
 
 Item::~Item()
 {

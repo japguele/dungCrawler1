@@ -23,6 +23,10 @@ void Hero::AddItem(Item* item){
 	//backpack.insert({ item->name, item });
 }
 
+vector<Item*> Hero::GetBackpack(){
+	return backpack;
+}
+
 void Hero::LevelUp(){
 	level++;
 	health += 20;

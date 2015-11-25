@@ -8,6 +8,19 @@ BossChamber::BossChamber(Level* lvl, int x, int y,Enemy* en) : Chamber(lvl, x, y
 {
 }
 
+string BossChamber::GetMapIcon(){
+	if (visited){
+		return "B";
+	}
+	else {
+		return " ";
+	}
+}
+
+string BossChamber::GetMapIconCheatmode(){
+	return "B";
+}
+
 std::string BossChamber::Save(int x, int y, int z){
 	//	int z = level->GetDepth();
 	bool n = (north);

@@ -11,6 +11,7 @@ class Chamber
 {
 public:
 	virtual std::string GetMapIcon();
+	virtual std::string GetMapIconCheatmode();
 	Chamber(Level*,int,int,std::string,Enemy*,Trap*);
 	virtual ~Chamber();
 	virtual void SetChamberInDirection(Chamber*, Direction);

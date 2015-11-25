@@ -6,12 +6,12 @@ Potion::Potion(int val,std::string nam, std::string desc)
 {
 	this->value = val;
 	this->name = nam;
-	this->decription = desc;
+	this->description = desc;
 }
 
 void Potion::UseItem(Hero* hero){
 	cout << "I used the following item: " << name << endl;
-	cout << decription;
+	cout << description;
 	hero->DrinkPotion(value);
 }
 

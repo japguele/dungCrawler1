@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "SeeCommand.h"
 
-enum actions { backpack, self, map, chamber };
+enum actions { backpack, self, map, chamber, cheatmap };
 
 SeeCommand::SeeCommand()
 {
@@ -16,6 +16,7 @@ actions hashit(string const& inString) {
 	if (inString == "self") return self;
 	if (inString == "map") return map;
 	if (inString == "chamber") return chamber;
+	if (inString == "cheatmap") return cheatmap;
 }
 
 void SeeCommand::Execute(string command){
@@ -32,20 +33,23 @@ void SeeCommand::Execute(string command){
 	case chamber:
 		printRoom();
 		break;
+	case cheatmap:
+		cheatmode = true;
+		printMap();
+		cheatmode = false;
+		break;
 	default:
 		cout << "That is no valid action, please use: backpack/self/map/chamber";
 	}
 }
 
-void SeeCommand::printBackpack(){/*
-	string backpack[] = game->GetHero()->GetBackpack();
+void SeeCommand::printBackpack(){
+	auto backpack = game->GetHero()->GetBackpack();
 
 	cout << "My backpack contains:\n";
-	for (int i = 0; i < backpack.length(); i++){
-		if (backpack[i] != null){
-			cout << "\t-" << backpack[i] << ".\n";
-		}
-	}*/
+	for (int x = 0; x < backpack.size(); x++){
+		cout << "-" + backpack.at(x)->GetName() << endl;
+	}
 }
 
 void SeeCommand::printSelf(){
@@ -58,11 +62,12 @@ void SeeCommand::printSelf(){
 
 void SeeCommand::printMap(){
 	cout << "[ ] = Undiscovered chamber" << endl;
-	cout << "[O] = Visted empty chamber" << endl;
+	cout << "[O] = Empty chamber" << endl;
 	cout << "[X] = You are here" << endl;
-	cout << "[S] = Visited stair room" << endl;
-	cout << "[M] = Visited Room with a monster" << endl;
-	cout << "[T] = Visited Room with a trap" << endl;
+	cout << "[S] = Stair room" << endl;
+	cout << "[M] = Chamber with a monster" << endl;
+	cout << "[T] = Chamber with a trap" << endl;
+	cout << "[B] = Chamber with a boss monster" << endl;
 	cout << "- = A hallway east/west" << endl;
 	cout << "| = A hallway north/south" << endl;
 	size_t z = game->GetHero()->GetChamber()->GetLevel()->GetDepth();
@@ -85,13 +90,28 @@ void SeeCommand::PrintTopLine(Chamber* chamber){
 			cout << "[X]";
 		}
 		else {
-			cout << "["<<chamber->GetMapIcon()<<"]";
+			if (cheatmode){
+				cout << "[" << chamber->GetMapIconCheatmode() << "]";
+			}
+			else {
+				cout << "["<<chamber->GetMapIcon()<<"]";
+			}
 		}
-		if (chamber->GetChamberInDirection(Direction::East) && chamber->GetChamberInDirection(Direction::East)->GetVisited()){
-			cout << "-";
+		if (!cheatmode){
+			if (chamber->GetChamberInDirection(Direction::East) && chamber->GetChamberInDirection(Direction::East)->GetVisited()){
+				cout << "-";
+			}
+			else {
+				cout << " ";
+			}
 		}
 		else {
-			cout << " ";
+			if (chamber->GetChamberInDirection(Direction::East)){
+				cout << "-";
+			}
+			else {
+				cout << " ";
+			}
 		}
 	}
 	else {
@@ -101,11 +121,21 @@ void SeeCommand::PrintTopLine(Chamber* chamber){
 
 void SeeCommand::PrintTopHallwayLine(Chamber* chamber){
 	if (chamber != nullptr){
-		if (chamber->GetChamberInDirection(Direction::South) && chamber->GetChamberInDirection(Direction::South)->GetVisited()){
-			cout << " |  ";
+		if (!cheatmode){
+			if (chamber->GetChamberInDirection(Direction::South) && chamber->GetChamberInDirection(Direction::South)->GetVisited()){
+				cout << " |  ";
+			}
+			else {
+				cout << "    ";
+			}
 		}
 		else {
-			cout << "    ";
+			if (chamber->GetChamberInDirection(Direction::South)){
+				cout << " |  ";
+			}
+			else {
+				cout << "    ";
+			}
 		}
 	}
 	else {
