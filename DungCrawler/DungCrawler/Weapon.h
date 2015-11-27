@@ -10,5 +10,6 @@ public:
 	Weapon(string, string, string);
 	void UseItem(Hero* hero);
 	~Weapon();
+	virtual std::string Save();
 };
 

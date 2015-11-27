@@ -9,8 +9,7 @@ Dungeon::Dungeon(int chambers) : cf(new ChamberFactory())
 	hero = new Hero("Jark");
 	startChamber = cf->CreateChambers(chambers);
 	hero->SetCurrentChamber(startChamber);
-	Save("heyo");
-	Load("heyo");
+
 
 }
 
@@ -86,8 +85,14 @@ void Dungeon::LoadPlayer(std::string _name){
 	vector<Item*> backpack = vector<Item*>();
 	int x = 6;
 	while (vect.size() < x){
-		//backpack.insert(vect[x], new Item(vec[x + 1]));
-			x++;
+		if (vect[x] == "Potion"){
+			backpack.push_back(new Potion(atoi(vect[x + 1].c_str()),vect[x+2],vect[x+3]));
+		}
+		else{
+			backpack.push_back(new Weapon(vect[x + 1], vect[x + 2], vect[x + 3]));
+		}
+		
+			x = x + 4;
 	}
 	hero = new Hero(vect[0], atoi(vect[1].c_str()), atoi(vect[2].c_str()), atoi(vect[3].c_str()), atoi(vect[4].c_str()), atoi(vect[5].c_str()), backpack);
 

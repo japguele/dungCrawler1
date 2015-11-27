@@ -13,7 +13,9 @@ void Weapon::UseItem(Hero* hero){
 	cout << "I have a " << value << " " << name << ". But " << description << endl;
 }
 
-
+std::string Weapon::Save(){
+	return ",Weapon," + value + "," + name + "," + description;
+}
 Weapon::~Weapon()
 {
 }

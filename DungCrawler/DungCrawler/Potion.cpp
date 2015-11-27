@@ -38,7 +38,9 @@ void Potion::UseItem(Hero* hero){
 		break;
 	}
 }
-
+std::string Potion::Save(){
+	return ",Potion," + std::to_string(value) + "," + name + "," + description;
+}
 Potion::~Potion()
 {
 }
