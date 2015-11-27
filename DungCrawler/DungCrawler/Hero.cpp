@@ -7,6 +7,7 @@ Hero::Hero(){
 
 Hero::Hero(string n, int _health, int _level, int _off, int _def, int _exp, vector<Item*> _backpack)
 {
+	fac = ItemFactory();
 	name = n;
 	health = _health;
 	level = _level;
@@ -18,6 +19,7 @@ Hero::Hero(string n, int _health, int _level, int _off, int _def, int _exp, vect
 }
 Hero::Hero(string n)
 {
+	fac = ItemFactory();
 	name = n;
 	health = 50;
 	level = 1;
@@ -31,6 +33,7 @@ Hero::Hero(string n)
 	backpack.push_back(pot2);
 }
 void Hero::AddItem(Item* item){
+	backpack.push_back(item);
 	//backpack.insert({ item->name, item });
 }
 
@@ -47,7 +50,7 @@ void Hero::LevelUp(){
 }
 
 void Hero::GainExp(int exp){
-	cout << "I gained " << exp << "experience!" << endl;
+	cout << "I gained " << exp << " experience!" << endl;
 	experience += exp;
 	if (experience >= (level*100)){
 		cout << "Congratiolations, you leveled up!\n";
@@ -56,6 +59,18 @@ void Hero::GainExp(int exp){
 		GainExp(tempExp);
 	}
 	cout << "Your new experience is: " << experience << ".\n";
+}
+
+void Hero::GainOffence(int val){
+	cout << "I gained " << val << " offence.\n";
+	offense += val;
+	cout << "Your new offence is: " << offense << ".\n";
+}
+
+void Hero::GainDefence(int val){
+	cout << "I gained " << val << " defence.\n";
+	defence += val;
+	cout << "Your new defence is: " << defence << ".\n";
 }
 
 void Hero::DrinkPotion(int pot){
@@ -85,6 +100,7 @@ void Hero::Attack(){
 		int bonusExp = currentChamber->GetEnemy()->GetLevel() * 5;
 		currentChamber->DefeatEnemy();
 		GainExp(baseExp+bonusExp);
+		AddItem(fac.CreateItem());
 	}
 	else {
 		if (!TakeDamage(currentChamber->GetEnemy()->getAttack())){

@@ -94,6 +94,7 @@
     <ClCompile Include="EnemyFactory.cpp">
       <Filter>classes\model\unit</Filter>
     </ClCompile>
+    <ClCompile Include="ItemFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainView.h">
@@ -198,6 +199,7 @@
     <ClInclude Include="UnitType.h">
       <Filter>headers\model\unit</Filter>
     </ClInclude>
+    <ClInclude Include="ItemFactory.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="headers">
