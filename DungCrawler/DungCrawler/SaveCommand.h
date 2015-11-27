@@ -6,6 +6,7 @@ class SaveCommand :
 public:
 	SaveCommand();
 	virtual void Execute();
+	virtual void Execute(string move);
 	~SaveCommand();
 };
 

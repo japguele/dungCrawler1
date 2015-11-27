@@ -48,6 +48,7 @@ ChamberFactory::ChamberFactory()
 
 	time_t t = time(0);   // get time now
 	srand(t);
+	ray = nullptr;
 }
 
 Array3D* ChamberFactory::GetArray3D(){
@@ -108,7 +109,7 @@ Chamber* ChamberFactory::CreateChambers(int ammount){
 		return ray->get(5, 6, 0);
 	}
 	else{
-		return ray->get(5, 5, 0);
+		return ray->get(4, 4, 0);
 	}
 
 }
@@ -395,4 +396,18 @@ Chamber* ChamberFactory::CreateDungFromString(string a){
 
 	
 	return ray->get(4,4,0);
+}
+void ChamberFactory::clean(){
+	if (ray != nullptr){
+		for (int x = 0; x < ray->get_x_size(); x++){
+			for (int y = 0; y < ray->get_y_size(); y++){
+				for (int z = 0; z< ray->get_z_size(); z++){
+					if (ray->get(x, y, z) != nullptr){
+						delete ray->get(x, y, z);
+						ray->put(nullptr, x, y, z);
+					}
+				}
+			}
+		}
+	}
 }

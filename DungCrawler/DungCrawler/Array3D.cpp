@@ -29,6 +29,10 @@ Array3D::Array3D(const Array3D& other) : x_size{ other.x_size }, y_size{ other.y
 	std::memcpy(array, other.array, arraySize*sizeof(int));
 }
 
+Array3D* Array3D::getArray(){
+	return this;
+}
+
 Array3D& Array3D::operator=(const Array3D& other) {
 	if (this != &other) {
 		// cleanup

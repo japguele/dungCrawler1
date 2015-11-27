@@ -7,7 +7,8 @@ StartCommand::StartCommand()
 }
 
 void StartCommand::Execute(){
-	//game.NewGame();
+	game->GetChamberFactory()->clean();
+	game->CreateDungeon();
 }
 
 StartCommand::~StartCommand()
