@@ -15,6 +15,7 @@ public:
 	EnemyFactory();
 	~EnemyFactory();
 	Enemy* createEnemy(UnitType,Level* level);
+	Enemy* createBoss(Level* level);
 	std::vector<std::string> type;
 	std::vector<std::string>  teeth;
 	std::vector<std::string>  find;
