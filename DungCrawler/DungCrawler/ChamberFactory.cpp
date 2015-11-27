@@ -200,17 +200,24 @@ Chamber* ChamberFactory::CreateChamber(Level* l, int xpos, int ypos){
 	counter = counter + 1;
 	//cout << counter;
 	Enemy* en = nullptr;
-	if (rand() % 3 > 1){
-		en = fac.createEnemy(UnitType::Enemy, l);
+	if (rand() % 25 == 20){
+
+		c = new BossChamber(l, xpos, ypos, fac.createBoss(l));
+
 	}
-	Trap* t = nullptr;
-	if (rand() % 3 > 1){
-		t = new Trap();
-		t->Init(l->GetDepth(), traps[rand() % 5]);
+	else{
+		if (rand() % 3 > 1){
+			en = fac.createEnemy(UnitType::Enemy, l);
+		}
+		Trap* t = nullptr;
+		if (rand() % 3 > 1){
+			t = new Trap();
+			t->Init(l->GetDepth(), traps[rand() % 5]);
+		}
+		c = new Chamber(l, xpos, ypos, discription, en, t);
+
+		ray->put(c, xpos, ypos, l->GetDepth());
 	}
-	c = new Chamber(l, xpos, ypos, discription, en, t);
-	
-	ray->put(c, xpos, ypos, l->GetDepth());
 	return c;
 
 
@@ -337,7 +344,7 @@ Chamber* ChamberFactory::CreateDungFromString(string a){
 			ray = new Array3D(10, 10, atoi(vecop[0].c_str()));
 			x = atoi(vecop[1].c_str());
 			y = atoi(vecop[2].c_str());
-			z = atoi(vecop[3].c_str());
+			z = atoi(vecop[0].c_str());
 			for (int counter = 0; counter < atoi(vecop[0].c_str()); counter++){
 				vec.push_back(new Level(counter));
 			}
@@ -361,6 +368,18 @@ Chamber* ChamberFactory::CreateDungFromString(string a){
 		}
 
 	}
+	for (int i = 0; i + 1 < z; ++i){
+		//connect stairs
+		if (i != 0){
+			ray->get(4, 4, i)->SetChamberInDirection(ray->get(4, 4, i - 1), Direction::Down);
+		}
+		if (i + 1 < z){
+			ray->get(4, 4, i)->SetChamberInDirection(ray->get(4, 4, i + 1), Direction::Up);
+		}
+
+	}
+
+
 
 	
 	return ray->get(4,4,0);
