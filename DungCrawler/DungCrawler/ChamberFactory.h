@@ -32,6 +32,7 @@ public:
 	void LinkChamberFromString(string a);
 	void CreateChamberFromString(string, vector<Level*> vec);
 	Chamber* CreateDungFromString(string);
+	void clean();
 private:
 
 	EnemyFactory fac;

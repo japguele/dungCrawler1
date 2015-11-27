@@ -3,7 +3,8 @@
 
 Array3D::Array3D(size_t xLength, size_t yLength, size_t zLength) : x_size{ xLength }, y_size{ yLength }, z_size{ zLength }
 {
-	int z = (xLength * yLength *zLength);
+	//int z = (xLength * yLength *zLength)+1;
+	int z = 10000;
 	//array = new Chamber*[z];
 
 	//array = new (Chamber*)[z];
@@ -27,6 +28,10 @@ Array3D::Array3D(const Array3D& other) : x_size{ other.x_size }, y_size{ other.y
 
 	// alle bytes van de ander kopiëren
 	std::memcpy(array, other.array, arraySize*sizeof(int));
+}
+
+Array3D* Array3D::getArray(){
+	return this;
 }
 
 Array3D& Array3D::operator=(const Array3D& other) {

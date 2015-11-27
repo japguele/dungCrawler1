@@ -21,7 +21,7 @@ public:
 
 	void put(Chamber*, size_t, size_t, size_t);
 	Chamber* get(size_t, size_t, size_t) const;
-
+	Array3D* getArray();
 	~Array3D();
 private:
 	size_t x_size;

@@ -168,8 +168,8 @@ array<bool,4> Chamber::GetExits(){
 
 Chamber::~Chamber()
 {
-	delete north;
+	/*delete north;
 	delete south;
 	delete east;
-	delete west;
+	delete west;*/
 }
