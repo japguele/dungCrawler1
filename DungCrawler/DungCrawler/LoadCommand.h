@@ -6,6 +6,7 @@ class LoadCommand :
 public:
 	LoadCommand();
 	virtual void Execute();
+	virtual void Execute(string move);
 	~LoadCommand();
 };
 
