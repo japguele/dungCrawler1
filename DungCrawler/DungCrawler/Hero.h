@@ -4,6 +4,7 @@
 #include <unordered_map>
 #include <iostream>
 #include "Chamber.h"
+#include "ItemFactory.h"
 
 class Hero :
 	public Unit
@@ -16,6 +17,8 @@ public:
 	void AddItem(Item*);
 	void LevelUp();
 	void GainExp(int);
+	void GainOffence(int);
+	void GainDefence(int);
 	void DrinkPotion(int);
 	int GetExperience();
 	Chamber* GetChamber();
@@ -27,6 +30,7 @@ public:
 	vector<Item*> GetBackpack();
 
 private:
+	ItemFactory fac;
 	vector<Item*> backpack;
 	int experience;
 	string name;

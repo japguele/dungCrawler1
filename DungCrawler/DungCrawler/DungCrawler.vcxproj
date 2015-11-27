@@ -95,6 +95,7 @@
     <ClInclude Include="Hero.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="ItemFactory.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="LoadCommand.h" />
     <ClInclude Include="MainController.h" />
@@ -131,6 +132,7 @@
     <ClCompile Include="Hero.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="ItemFactory.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="LoadCommand.cpp" />
     <ClCompile Include="MainController.cpp" />
