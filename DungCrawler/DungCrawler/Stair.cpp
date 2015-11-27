@@ -15,6 +15,10 @@ Stair::Stair(Level* lvl,int x,int y,Enemy* en) : Chamber(lvl,x,y,"stair",en, nul
 Stair::~Stair()
 {
 }
+string Stair::GetMapIconCheatmode(){
+	return "S";
+}
+
 string Stair::GetMapIcon(){
 	if (visited){
 		return "S";

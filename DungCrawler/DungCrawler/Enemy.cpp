@@ -7,6 +7,7 @@ Enemy::Enemy()
 
 }
 Enemy::Enemy(int _lvl, int _attack, int _defence, int _health, std::string _disc){
+	cout << disc;
 	disc = _disc;
 	health = _health;
 	level = _lvl;
@@ -45,7 +46,9 @@ bool Enemy::TakeDamage(int damage){
 	return false;
 }
 std::string Enemy::Save(){
-	return "," + std::to_string(level) + "," + std::to_string(health) + "," + std::to_string(offense) + "," + std::to_string(defence) + "," + disc;
+	
+	return ",Enemy,"+ std::to_string(level) + "," + std::to_string(health) + "," + std::to_string(offense) + "," + std::to_string(defence) + "," + disc;
+	//return "";
 }
 Enemy::~Enemy()
 {

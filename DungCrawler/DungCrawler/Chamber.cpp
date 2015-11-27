@@ -89,6 +89,9 @@ std::string Chamber::Save(int x,int y,int z){
 	if (enemy){
 		a = a + enemy->Save();
 	}
+	if (trap){
+		a = a + trap->Save();
+	}
 
 	for (std::string::iterator it = a.begin(); it != a.end(); ++it) {
 		if (*it == ' ') {

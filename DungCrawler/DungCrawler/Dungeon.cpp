@@ -9,8 +9,8 @@ Dungeon::Dungeon(int chambers) : cf(new ChamberFactory())
 	hero = new Hero("Jark");
 	startChamber = cf->CreateChambers(chambers);
 	hero->SetCurrentChamber(startChamber);
-	//Save("heyo");
-	//Load("heyo");
+	Save("heyo");
+	Load("heyo");
 
 }
 

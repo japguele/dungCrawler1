@@ -3,7 +3,7 @@
 
 Array3D::Array3D(size_t xLength, size_t yLength, size_t zLength) : x_size{ xLength }, y_size{ yLength }, z_size{ zLength }
 {
-	int z = (xLength * yLength *zLength);
+	int z =(xLength * yLength *zLength);
 	//array = new Chamber*[z];
 
 	//array = new (Chamber*)[z];

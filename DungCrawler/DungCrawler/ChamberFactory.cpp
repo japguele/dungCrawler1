@@ -216,8 +216,9 @@ Chamber* ChamberFactory::CreateChamber(Level* l, int xpos, int ypos){
 		}
 		c = new Chamber(l, xpos, ypos, discription, en, t);
 
-		ray->put(c, xpos, ypos, l->GetDepth());
+		
 	}
+	ray->put(c, xpos, ypos, l->GetDepth());
 	return c;
 
 
@@ -287,17 +288,27 @@ void ChamberFactory::CreateChamberFromString(string a, vector<Level*> vec){
 //	bool w = vect[7];
 	string disc = vect[8];
 	Enemy* enemy = nullptr;
+	Trap* trap = nullptr;
 	if (vect.size() > 9){
-		string enemylevel = vect[9];
-		string health = vect[10];
-		string offense = vect[11];
-		string defence = vect[12];
-		string discenemy = vect[13];
-		enemy = new Enemy(atoi(enemylevel.c_str()), atoi(offense.c_str()), atoi(defence.c_str()), atoi(health.c_str()), discenemy);
-	
+		if (vect[9] == "Enemy"){
+			string enemylevel = vect[10];
+			string health = vect[11];
+			string offense = vect[12];
+			string defence = vect[13];
+			string discenemy = vect[14];
+			enemy = new Enemy(atoi(enemylevel.c_str()), atoi(offense.c_str()), atoi(defence.c_str()), atoi(health.c_str()), discenemy);
+			if (vect.size() > 16){
+				trap = new Trap(atoi(vect[15].c_str()), (vect[16] == "1"), vect[17]);
+			}
+		
+		}else{
+		
+			trap = new Trap(atoi(vect[10].c_str()), (vect[11] == "1"), vect[12]);
+		}
 	}
+
 	if (type == "Chamber"){
-		ray->put(new Chamber(vec[z], xpos, ypos, disc, enemy,nullptr),xpos, ypos, z);
+		ray->put(new Chamber(vec[z], xpos, ypos, disc, enemy,trap),xpos, ypos, z);
 
 		}
 	else 	if (type == "Stair"){
@@ -306,7 +317,7 @@ void ChamberFactory::CreateChamberFromString(string a, vector<Level*> vec){
 	else	if (type == "BossChamber"){
 		ray->put(new BossChamber(vec[z], xpos, ypos, enemy),xpos, ypos, z);
 
-		}
+	}
 	
 
 
@@ -351,6 +362,7 @@ Chamber* ChamberFactory::CreateDungFromString(string a){
 			first = false;
 		}
 		else{
+
 			CreateChamberFromString(temp, vec);
 		}
 	
@@ -368,7 +380,7 @@ Chamber* ChamberFactory::CreateDungFromString(string a){
 		}
 
 	}
-	for (int i = 0; i + 1 < z; ++i){
+	for (int i = 0; i + 1< z; i++){
 		//connect stairs
 		if (i != 0){
 			ray->get(4, 4, i)->SetChamberInDirection(ray->get(4, 4, i - 1), Direction::Down);

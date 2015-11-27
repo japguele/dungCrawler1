@@ -54,7 +54,7 @@ Enemy* EnemyFactory::createEnemy(UnitType unit,Level* level){
 
 Enemy* EnemyFactory::createBoss(Level* level){
 	Enemy* en = new Enemy();
-	en->Init(level->GetMonsterDif() + 5,"A gain Monster Boss, its looks alot stronger than normal monsters");
+	en->Init(level->GetMonsterDif() + 5," A gain Monster Boss, its looks alot stronger than normal monsters ");
 	return en;
 
 }
