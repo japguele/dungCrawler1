@@ -100,7 +100,11 @@ void Hero::Attack(){
 		int bonusExp = currentChamber->GetEnemy()->GetLevel() * 5;
 		currentChamber->DefeatEnemy();
 		GainExp(baseExp+bonusExp);
-		AddItem(fac.CreateItem());
+		Item* item = fac.CreateItem();
+		if (item != nullptr){
+			cout << "This monster dropped a: " << item->GetName() << endl;
+			AddItem(item);
+		}
 	}
 	else {
 		if (!TakeDamage(currentChamber->GetEnemy()->getAttack())){
