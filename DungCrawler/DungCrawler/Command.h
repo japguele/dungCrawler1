@@ -11,5 +11,6 @@ public:
 	virtual void Execute();
 	virtual void Execute(string para);
 	virtual ~Command();
+	virtual bool GameExist();
 };
 

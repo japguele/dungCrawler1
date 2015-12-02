@@ -19,21 +19,23 @@ fightMoves hashit(string const& inString) {
 }
 
 void FightCommand::Execute(string move){
-	fightMoves fightMove = hashit(move);
-	switch (fightMove){
-	case attack:
-		game->GetHero()->Attack();
-		break;
-	case magic:
-		game->GetHero()->Magic();
-		break;
-	case run:
-		game->GetHero()->RunAway();
-		break;
-	//case item:
-	default:
-		cout << "That is no valid move, please use: attack/magic/run";
-		break;
+	if (GameExist()){
+		fightMoves fightMove = hashit(move);
+		switch (fightMove){
+		case attack:
+			game->GetHero()->Attack();
+			break;
+		case magic:
+			game->GetHero()->Magic();
+			break;
+		case run:
+			game->GetHero()->RunAway();
+			break;
+			//case item:
+		default:
+			cout << "That is no valid move, please use: attack/magic/run";
+			break;
+		}
 	}
 }
 
