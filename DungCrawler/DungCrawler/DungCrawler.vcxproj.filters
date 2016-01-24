@@ -70,6 +70,9 @@
     <ClCompile Include="HardCodedNodeDungeon.cpp">
       <Filter>classes\model\test</Filter>
     </ClCompile>
+    <ClCompile Include="SilverCompass.cpp">
+      <Filter>classes\model\items</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainView.h">
@@ -146,6 +149,9 @@
     </ClInclude>
     <ClInclude Include="HardcodedNodeDungeon.h">
       <Filter>headers\model\test</Filter>
+    </ClInclude>
+    <ClInclude Include="SilverCompass.h">
+      <Filter>headers\model\items</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

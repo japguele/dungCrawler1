@@ -95,6 +95,7 @@
     <ClInclude Include="MainView.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="Potion.h" />
+    <ClInclude Include="SilverCompass.h" />
     <ClInclude Include="SpikeTrap.h" />
     <ClInclude Include="Stair.h" />
     <ClInclude Include="Start.h" />
@@ -122,6 +123,7 @@
     <ClCompile Include="MainView.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="Potion.cpp" />
+    <ClCompile Include="SilverCompass.cpp" />
     <ClCompile Include="SpikeTrap.cpp" />
     <ClCompile Include="Stair.cpp" />
     <ClCompile Include="Start.cpp" />
