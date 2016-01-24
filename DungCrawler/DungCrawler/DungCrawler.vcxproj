@@ -91,6 +91,7 @@
     <ClInclude Include="EnemyFactory.h" />
     <ClInclude Include="FightCommand.h" />
     <ClInclude Include="GoCommand.h" />
+    <ClInclude Include="HandGrenade.h" />
     <ClInclude Include="HelpCommand.h" />
     <ClInclude Include="Hero.h" />
     <ClInclude Include="InputHandler.h" />
@@ -104,10 +105,12 @@
     <ClInclude Include="QuitCommand.h" />
     <ClInclude Include="SaveCommand.h" />
     <ClInclude Include="SeeCommand.h" />
+    <ClInclude Include="SilverCompass.h" />
     <ClInclude Include="SpikeTrap.h" />
     <ClInclude Include="Stair.h" />
     <ClInclude Include="StartCommand.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Talisman.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Trap.h" />
     <ClInclude Include="Unit.h" />
@@ -144,6 +147,7 @@
     <ClCompile Include="SpikeTrap.cpp" />
     <ClCompile Include="Stair.cpp" />
     <ClCompile Include="StartCommand.cpp" />
+    <ClCompile Include="Talisman.cpp" />
     <ClCompile Include="Trap.cpp" />
     <ClCompile Include="Unit.cpp" />
     <ClCompile Include="UseCommand.cpp" />

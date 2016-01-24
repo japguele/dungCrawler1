@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Hero.h"
 #include "potion.h"
+#include "Talisman.h"
 Hero::Hero(){
 
 }
@@ -31,6 +32,10 @@ Hero::Hero(string n)
 	Potion* pot2 = new Potion(30, "HealthPotion", "I drink this weird smelling potion");
 	backpack.push_back(pot);
 	backpack.push_back(pot2);
+
+	//added for algorithummmmss
+	Talisman* talisman = new Talisman("talisman", "Find stairs");
+	backpack.push_back(talisman);
 }
 void Hero::AddItem(Item* item){
 	backpack.push_back(item);

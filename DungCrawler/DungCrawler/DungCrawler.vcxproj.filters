@@ -97,6 +97,9 @@
     <ClCompile Include="ItemFactory.cpp">
       <Filter>classes\model\items</Filter>
     </ClCompile>
+    <ClCompile Include="Talisman.cpp">
+      <Filter>classes\model\items</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainView.h">
@@ -202,6 +205,15 @@
       <Filter>headers\model\unit</Filter>
     </ClInclude>
     <ClInclude Include="ItemFactory.h">
+      <Filter>headers\model\items</Filter>
+    </ClInclude>
+    <ClInclude Include="Talisman.h">
+      <Filter>headers\model\items</Filter>
+    </ClInclude>
+    <ClInclude Include="SilverCompass.h">
+      <Filter>headers\model\items</Filter>
+    </ClInclude>
+    <ClInclude Include="HandGrenade.h">
       <Filter>headers\model\items</Filter>
     </ClInclude>
   </ItemGroup>
