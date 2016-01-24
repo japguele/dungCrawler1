@@ -52,27 +52,56 @@
     <ClCompile Include="MainController.cpp">
       <Filter>classes</Filter>
     </ClCompile>
-    <ClCompile Include="Start.cpp">
-      <Filter>classes\model\chamber</Filter>
-    </ClCompile>
     <ClCompile Include="Level.cpp">
       <Filter>classes\model\chamber</Filter>
     </ClCompile>
-    <ClCompile Include="Talisman.cpp">
+    <ClCompile Include="Command.cpp">
+      <Filter>classes\model\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandFactory.cpp">
+      <Filter>classes\model\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="GoCommand.cpp">
+      <Filter>classes\model\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="StartCommand.cpp">
+      <Filter>classes\model\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="QuitCommand.cpp">
+      <Filter>classes\model\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="FightCommand.cpp">
+      <Filter>classes\model\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadCommand.cpp">
+      <Filter>classes\model\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveCommand.cpp">
+      <Filter>classes\model\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="SeeCommand.cpp">
+      <Filter>classes\model\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="UseCommand.cpp">
+      <Filter>classes\model\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="InputHandler.cpp">
+      <Filter>classes</Filter>
+    </ClCompile>
+    <ClCompile Include="HelpCommand.cpp">
+      <Filter>classes\model\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyFactory.cpp">
+      <Filter>classes\model\unit</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemFactory.cpp">
       <Filter>classes\model\items</Filter>
     </ClCompile>
-    <ClCompile Include="Node.cpp">
-      <Filter>classes\model\test</Filter>
-    </ClCompile>
-    <ClCompile Include="HandGrenade.cpp">
-      <Filter>classes\model\items</Filter>
-    </ClCompile>
-    <ClCompile Include="HardCodedNodeDungeon.cpp">
-      <Filter>classes\model\test</Filter>
-    </ClCompile>
-    <ClCompile Include="SilverCompass.cpp">
-      <Filter>classes\model\items</Filter>
-    </ClCompile>
+    <ClCompile Include="HandGrenade.cpp" />
+    <ClCompile Include="HardCodedNodeDungeon.cpp" />
+    <ClCompile Include="Node.cpp" />
+    <ClCompile Include="SilverCompass.cpp" />
+    <ClCompile Include="Talisman.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainView.h">
@@ -117,9 +146,6 @@
     <ClInclude Include="Stair.h">
       <Filter>headers\model\chamber</Filter>
     </ClInclude>
-    <ClInclude Include="Start.h">
-      <Filter>headers\model\chamber</Filter>
-    </ClInclude>
     <ClInclude Include="Trap.h">
       <Filter>headers\model\traps</Filter>
     </ClInclude>
@@ -138,21 +164,56 @@
     <ClInclude Include="Direction.h">
       <Filter>headers\model</Filter>
     </ClInclude>
-    <ClInclude Include="Talisman.h">
+    <ClInclude Include="Command.h">
+      <Filter>headers\model\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandFactory.h">
+      <Filter>headers\model\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="GoCommand.h">
+      <Filter>headers\model\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="StartCommand.h">
+      <Filter>headers\model\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="QuitCommand.h">
+      <Filter>headers\model\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="FightCommand.h">
+      <Filter>headers\model\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadCommand.h">
+      <Filter>headers\model\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveCommand.h">
+      <Filter>headers\model\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="SeeCommand.h">
+      <Filter>headers\model\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="UseCommand.h">
+      <Filter>headers\model\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="InputHandler.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="HelpCommand.h">
+      <Filter>headers\model\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyFactory.h">
+      <Filter>headers\model\unit</Filter>
+    </ClInclude>
+    <ClInclude Include="UnitType.h">
+      <Filter>headers\model\unit</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemFactory.h">
       <Filter>headers\model\items</Filter>
     </ClInclude>
-    <ClInclude Include="Node.h">
-      <Filter>headers\model\test</Filter>
-    </ClInclude>
-    <ClInclude Include="HandGrenade.h">
-      <Filter>headers\model\items</Filter>
-    </ClInclude>
-    <ClInclude Include="HardcodedNodeDungeon.h">
-      <Filter>headers\model\test</Filter>
-    </ClInclude>
-    <ClInclude Include="SilverCompass.h">
-      <Filter>headers\model\items</Filter>
-    </ClInclude>
+    <ClInclude Include="HandGrenade.h" />
+    <ClInclude Include="HardcodedNodeDungeon.h" />
+    <ClInclude Include="Node.h" />
+    <ClInclude Include="SilverCompass.h" />
+    <ClInclude Include="Talisman.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="headers">
@@ -191,11 +252,11 @@
     <Filter Include="headers\model\unit">
       <UniqueIdentifier>{407c28f1-b467-4ed7-bdea-f989b22af6f3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="classes\model\test">
-      <UniqueIdentifier>{1114b463-045c-4000-a3ec-2b4208f5bc73}</UniqueIdentifier>
+    <Filter Include="headers\model\commands">
+      <UniqueIdentifier>{5d0a3fe8-16b2-45f9-9feb-74574cc540b7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="headers\model\test">
-      <UniqueIdentifier>{a30b7d14-cc17-49a7-a612-8a258987bf8c}</UniqueIdentifier>
+    <Filter Include="classes\model\commands">
+      <UniqueIdentifier>{6147033c-8923-4651-9c40-8ee32daa3292}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

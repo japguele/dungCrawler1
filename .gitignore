@@ -42,6 +42,14 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+DungCrawler/Debug/DungCrawler.exe
+*.ilk
+DungCrawler/Debug/DungCrawler.pdb
+DungCrawler/DungCrawler/Debug/Dungeon.obj
+DungCrawler/DungCrawler/Debug/Array3D.obj
+DungCrawler/ipch/dungcrawler-38e2812a/dungcrawler-d8310a84.ipch
+
+
 # Visual Studio
 DungCrawler/DungCrawler.sdf
 DungCrawler/DungCrawler.v12.suo
@@ -54,3 +62,5 @@ DungCrawler/DungCrawler/Debug/DungCrawler.tlog/link.command.1.tlog
 DungCrawler/DungCrawler/Debug/DungCrawler.tlog/link.read.1.tlog
 DungCrawler/DungCrawler/Debug/DungCrawler.tlog/link.write.1.tlog
 DungCrawler/DungCrawler/Debug/vc120.idb
+DungCrawler/DungCrawler.sdf
+DungCrawler/DungCrawler.sdf

@@ -1,9 +1,9 @@
 enum class Direction
 {
-
 	North,
 	South,
 	West,
-	East
-
+	East,
+	Up,
+	Down
 };
