@@ -13,7 +13,8 @@ void SilverCompass::UseItem(Hero* hero) {
 	//---DIJKSTRA'S ALGORITHM SETTING UP---//
 	std::deque<Chamber*> queue = std::deque<Chamber*>();
 	std::unordered_set<Chamber*> visited = std::unordered_set<Chamber*>();
-	std::unordered_map<Chamber*, ChamberWeight*> weight = std::unordered_map<Chamber*, ChamberWeight*>();
+	std::unordered_map<Chamber*, Direction> previous = std::unordered_map<Chamber*, Direction>();
+
 
 	//setting up directionVector
 	std::vector<Direction> directionVector = std::vector<Direction>();
@@ -24,9 +25,7 @@ void SilverCompass::UseItem(Hero* hero) {
 
 	queue.push_back(hero->GetChamber()); //get current chamber and start finding the stairs
 
-	std::vector<Direction> directionList = std::vector<Direction>();
-	std::vector<int> enemyHPList = std::vector<int>();
-	weight[hero->GetChamber()] = new ChamberWeight(0, directionList, enemyHPList, 0); //set current distance to zero
+	
 
 	Chamber* stairsChamber = nullptr;
 	//---DIJKSTRA'S FINISHED SETTING UP---//
@@ -43,23 +42,13 @@ void SilverCompass::UseItem(Hero* hero) {
 
 					int newWeight = currentChamber->GetChamberInDirection(direction)->GetWeight();
 					
-					if (weight.find(currentChamber) == weight.end() 
-						|| newWeight < weight.find(currentChamber)->second->weight) {
-						directionList = weight.find(currentChamber)->second->directionList;
-						directionList.push_back(direction);
-						enemyHPList = weight.find(currentChamber)->second->enemyHPList;
-						enemyHPList.push_back(currentChamber->GetChamberInDirection(direction)->GetEnemy()->GetHealth());
-						
-						int amountTraps = weight.find(currentChamber)->second->amountTraps;
-						if (currentChamber->GetChamberInDirection(direction)->GetTrap()) {
-							amountTraps++;
-						}
+					if (newWeight < currentChamber->GetChamberInDirection(direction)->dijkstraWeight) {
+						currentChamber->GetChamberInDirection(direction)->dijkstraWeight = 
+							currentChamber->dijkstraWeight + currentChamber->GetChamberInDirection(direction)->GetWeight();
 
-						weight[currentChamber] = new ChamberWeight(newWeight, directionList, enemyHPList, amountTraps);
+						previous[currentChamber->GetChamberInDirection(direction)] = GetOppositeDirection(direction);
 					}
 					
-					
-
 					//when you can go Up or Down, that means you are in a "Stairs derived Chamber" = found our goal
 					if (currentChamber->GetChamberInDirection(direction)->GetChamberInDirection(Direction::Up) || currentChamber->GetChamberInDirection(direction)->GetChamberInDirection(Direction::Down)) {
 						//return the amount of steps
@@ -69,25 +58,91 @@ void SilverCompass::UseItem(Hero* hero) {
 					}
 
 					queue.push_back(currentChamber->GetChamberInDirection(direction));
-
-					directionList.clear();
-					enemyHPList.clear();
 				}
 			}
 		}
 		queue.pop_front(); //dequeue / pop
-
-		directionList.clear();
-		enemyHPList.clear();
 	}
 
+	std::vector<Direction> reverseDirectionList = std::vector<Direction>();
+	std::vector<Direction> directionList = std::vector<Direction>();
+	std::vector<int> enemyHPList = std::vector<int>();
+	int amountTraps = 0;
+
+
+	Chamber* currentChamber = nullptr;
+	currentChamber = stairsChamber;
+
 	if (stairsChamber) {
-		ChamberWeight* stairsWeight = weight.find(stairsChamber)->second;
-		for (auto dir : stairsWeight->directionList) {
-			std::cout << "[direction]";
+		while (currentChamber != hero->GetChamber()) {
+			reverseDirectionList.push_back(previous.find(currentChamber)->second);
+			currentChamber = currentChamber->GetChamberInDirection(previous.find(currentChamber)->second);
 		}
+
+		for (Direction direction : reverseDirectionList) {
+			directionList.push_back(GetOppositeDirection(direction));
+		}
+		
+		//just in case
+		currentChamber = hero->GetChamber();
+
+		for (Direction direction : directionList) {
+			//get all stats
+
+			//get enemies
+			if (currentChamber->GetEnemy()) {
+				enemyHPList.push_back(currentChamber->GetEnemy()->GetHealth());
+			}
+
+			//get traps
+			if (currentChamber->GetTrap()) {
+				amountTraps++;
+			}
+
+			currentChamber = currentChamber->GetChamberInDirection(direction);
+		}
+
+		std::cout << std::endl;
+		std::cout << "Directions";
+		for (Direction direction : directionList) {
+			if (direction == Direction::North) {
+				std::cout << "North - ";
+			}
+			if (direction == Direction::East) {
+				std::cout << "East - ";
+			}
+			if (direction == Direction::South) {
+				std::cout << "South - ";
+			}
+			if (direction == Direction::West) {
+				std::cout << "West - ";
+			}
+		}
+		std::cout << std::endl;
+		std::cout << "Enemies";
+		for (auto hp : enemyHPList) {
+			std::cout << "Enemy: " << hp << "HP";
+		}
+		std::cout << std::endl;
+
+		std::cout << "Amount of traps: " << amountTraps << std::endl;
 	}
 
 
 	//delete all chamberWeights
+}
+
+Direction SilverCompass::GetOppositeDirection(Direction direction) {
+	if (direction == Direction::North) {
+		return Direction::South;
+	}
+	else if (direction == Direction::East) {
+		return Direction::West;
+	}
+	else if (direction == Direction::South) {
+		return Direction::North;
+	}
+	else if (direction == Direction::West) {
+		return Direction::East;
+	}
 }

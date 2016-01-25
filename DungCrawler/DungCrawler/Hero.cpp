@@ -42,6 +42,7 @@ Hero::Hero(string n)
 	HandGrenade* handGrenade = new HandGrenade("handgrenade", "Destroy everything");
 	backpack.push_back(handGrenade);
 	SilverCompass* silverCompass = new SilverCompass("silvercompass", "Find best path");
+	backpack.push_back(silverCompass);
 }
 void Hero::AddItem(Item* item){
 	backpack.push_back(item);

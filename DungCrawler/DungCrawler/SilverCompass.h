@@ -17,4 +17,7 @@ public:
 	~SilverCompass();
 
 	void UseItem(Hero*);
+
+private:
+	Direction GetOppositeDirection(Direction direction);
 };

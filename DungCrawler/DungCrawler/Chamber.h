@@ -18,6 +18,7 @@ public:
 	virtual ~Chamber();
 	virtual void SetChamberInDirection(Chamber*, Direction);
 	virtual int  GetWeight();
+	int dijkstraWeight = 9999;
 	
 	Level* GetLevel();
 	virtual Chamber* GetChamberInDirection(Direction);
