@@ -10,5 +10,7 @@ public:
 	std::string GetMapIcon();
 	std::string GetMapIconCheatmode();
 	std::string Save(int x, int y, int z);
+	virtual int  GetWeight();
+
 };
 

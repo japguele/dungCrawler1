@@ -86,6 +86,35 @@ Chamber* Chamber::GetChamberInDirection(Direction dir){
 	}
 	
 }
+int Chamber::GetWeight(){
+	int x = 1;
+	if (enemy != nullptr){
+		x = x + 10;
+	}
+	if (trap != nullptr){
+		x = x + 2;
+	}
+	return x;
+}
+
+bool Chamber::DirectionIsOpen(Direction direction){
+	
+	switch (direction) {
+	case Direction::North:
+		return !exits[0];
+		break;
+	case Direction::South:
+		return !exits[1];
+		break;
+	case Direction::West:
+		return !exits[2];
+		break;
+	case Direction::East:
+		return !exits[3];
+		break;
+	}
+
+}
 std::string Chamber::Save(int x,int y,int z){
 //	int z = level->GetDepth();
 	bool n = (north);
@@ -117,19 +146,19 @@ void Chamber::SetInAccessibleDirection(Direction direction) {
 	switch (direction) {
 		case Direction::North:
 			exits[0] = true;
-			this->north->exits[2] = true;
+			this->north->exits[1] = true;
 			break;
 		case Direction::South:
-			exits[2] = true;
+			exits[1] = true;
 			this->south->exits[0] = true;
 			break;
 		case Direction::West:
-			exits[3] = true;
-			this->west->exits[1] = true;
+			exits[2] = true;
+			this->west->exits[3] = true;
 			break;
 		case Direction::East:
-			exits[1] = true;
-			this->east->exits[3] = true;
+			exits[3] = true;
+			this->east->exits[2] = true;
 			break;
 	}
 }
@@ -185,12 +214,15 @@ void Chamber::DefeatEnemy(){
 
 bool Chamber::AttackEnemy(int damage){
 	//attack enemy
-	if (enemy->TakeDamage(damage)){
-		return true;
+	if (enemy){
+		if (enemy->TakeDamage(damage)){
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
-	else {
-		return false;
-	}
+	return false;
 }
 
 array<bool,4> Chamber::GetExits(){

@@ -11,15 +11,24 @@ void GoCommand::Execute(string dir) {
 		Chamber* currentChamber = game->GetHero()->GetChamber();
 		if (CheckDirection(dir)){
 			if (currentChamber->GetChamberInDirection(directions.at(dir)) != nullptr){
-				if (currentChamber->GetEnemy() == nullptr){
-					if (currentChamber->GetTrap() != nullptr){
-						game->GetHero()->TakeDamage(currentChamber->GetTrap()->GetDamageValue());
+				if (currentChamber->DirectionIsOpen(directions.at(dir))){
+
+
+					if (currentChamber->GetEnemy() == nullptr){
+						if (currentChamber->GetChamberInDirection(directions.at(dir)))
+							if (currentChamber->GetTrap() != nullptr){
+							game->GetHero()->TakeDamage(currentChamber->GetTrap()->GetDamageValue());
+							}
+						cout << "I went " << dir << ".\n";
+						game->GetHero()->SetCurrentChamber(currentChamber->GetChamberInDirection(directions.at(dir)));
 					}
-					cout << "I went " << dir << ".\n";
-					game->GetHero()->SetCurrentChamber(currentChamber->GetChamberInDirection(directions.at(dir)));
+					else {
+						cout << "Their is an enemy blocking yout path. you have to defaeat it before you can go further." << endl;
+					}
 				}
-				else {
-					cout << "Their is an enemy blocking yout path. you have to defaeat it before you can go further." << endl;
+				else{
+					cout << "The way is blocked by rubble" << endl;
+
 				}
 			}
 			else {
