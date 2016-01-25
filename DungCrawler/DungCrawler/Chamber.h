@@ -17,7 +17,7 @@ public:
 	Chamber(Level*,int,int,std::string,Enemy*,Trap*);
 	virtual ~Chamber();
 	virtual void SetChamberInDirection(Chamber*, Direction);
-	
+	virtual int  GetWeight();
 	
 	Level* GetLevel();
 	virtual Chamber* GetChamberInDirection(Direction);
@@ -40,6 +40,7 @@ public:
 	std::array<bool, 4> exits;
 	bool GetVisited();
 	void SetVisited();
+	bool DirectionIsOpen(Direction);
 	Trap* GetTrap();
 	void DefeatEnemy();
 

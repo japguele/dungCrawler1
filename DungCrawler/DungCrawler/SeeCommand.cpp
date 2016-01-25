@@ -135,7 +135,7 @@ void SeeCommand::PrintTopLine(Chamber* chamber){
 		}
 		else {
 			if (chamber->GetChamberInDirection(Direction::East)){
-				if (!chamber->GetExits().at(1))
+				if (!chamber->GetExits().at(3))
 					cout << "-";
 				else
 					cout << "/";
@@ -165,7 +165,7 @@ void SeeCommand::PrintTopHallwayLine(Chamber* chamber){
 		}
 		else {
 			if (chamber->GetChamberInDirection(Direction::South)){
-				if (!chamber->GetExits().at(0))
+				if (!chamber->GetExits().at(1))
 					cout << " |  ";
 				else
 					cout << " /  ";
