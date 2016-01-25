@@ -12,11 +12,11 @@ void HelpCommand::Execute(){
 	cout << "\t-see {backpack/self/map/chamber}\n";
 	cout << "\t-use {item}\n";
 	cout << "\t-fight {attack/magic/run/item}\n";
-	cout << "\t-start\n";
-	cout << "\t-quit\n";
+	cout << "\t-start -> start a new game\n";
+	cout << "\t-quit\ -> quit the gamen";
 	cout << "\t-help\n";
-	cout << "\t-save {filename}\n";
-	cout << "\t-load {filename}\n";
+	cout << "\t-save\n";
+	cout << "\t-load\n";
 }
 
 

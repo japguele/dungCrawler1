@@ -7,26 +7,28 @@ GoCommand::GoCommand()
 }
  
 void GoCommand::Execute(string dir) {
-	Chamber* currentChamber = game->GetHero()->GetChamber();
-	if (CheckDirection(dir)){
-		if (currentChamber->GetChamberInDirection(directions.at(dir)) != nullptr){
-			if (currentChamber->GetEnemy() == nullptr){
-				if (currentChamber->GetTrap() != nullptr){
-					game->GetHero()->TakeDamage(currentChamber->GetTrap()->GetDamageValue());
+	if (GameExist()){
+		Chamber* currentChamber = game->GetHero()->GetChamber();
+		if (CheckDirection(dir)){
+			if (currentChamber->GetChamberInDirection(directions.at(dir)) != nullptr){
+				if (currentChamber->GetEnemy() == nullptr){
+					if (currentChamber->GetTrap() != nullptr){
+						game->GetHero()->TakeDamage(currentChamber->GetTrap()->GetDamageValue());
+					}
+					cout << "I went " << dir << ".\n";
+					game->GetHero()->SetCurrentChamber(currentChamber->GetChamberInDirection(directions.at(dir)));
 				}
-				cout << "I went " << dir << ".\n";
-				game->GetHero()->SetCurrentChamber(currentChamber->GetChamberInDirection(directions.at(dir)));
+				else {
+					cout << "Their is an enemy blocking yout path. you have to defaeat it before you can go further." << endl;
+				}
 			}
 			else {
-				cout << "Their is an enemy blocking yout path. you have to defaeat it before you can go further." << endl;
+				cout << "Their is no path in this direction.\n";
 			}
 		}
 		else {
-			cout << "Their is no path in this direction.\n";
+			cout << "Can you give me a real direction? (north, east, south, west)" << endl;
 		}
-	}
-	else {
-		cout << "Can you give me a real direction? (north, east, south, west)"<< endl;
 	}
 }
 

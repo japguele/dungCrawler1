@@ -20,26 +20,28 @@ actions hashit(string const& inString) {
 }
 
 void SeeCommand::Execute(string command){
-	switch (hashit(command)){
-	case backpack:
-		printBackpack();
-		break;
-	case self:
-		printSelf();
-		break;
-	case map:
-		printMap();
-		break;
-	case chamber:
-		printRoom();
-		break;
-	case cheatmap:
-		cheatmode = true;
-		printMap();
-		cheatmode = false;
-		break;
-	default:
-		cout << "That is no valid action, please use: backpack/self/map/chamber";
+	if (GameExist()){
+		switch (hashit(command)){
+		case backpack:
+			printBackpack();
+			break;
+		case self:
+			printSelf();
+			break;
+		case map:
+			printMap();
+			break;
+		case chamber:
+			printRoom();
+			break;
+		case cheatmap:
+			cheatmode = true;
+			printMap();
+			cheatmode = false;
+			break;
+		default:
+			cout << "That is no valid action, please use: backpack/self/map/chamber";
+		}
 	}
 }
 
