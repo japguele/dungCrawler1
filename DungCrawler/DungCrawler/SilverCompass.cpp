@@ -103,7 +103,7 @@ void SilverCompass::UseItem(Hero* hero) {
 		}
 
 		std::cout << std::endl;
-		std::cout << "Directions";
+		std::cout << "Directions: ";
 		for (Direction direction : directionList) {
 			if (direction == Direction::North) {
 				std::cout << "North - ";
