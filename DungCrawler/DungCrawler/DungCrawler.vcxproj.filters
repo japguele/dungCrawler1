@@ -103,6 +103,12 @@
     <ClCompile Include="HandGrenade.cpp">
       <Filter>classes\model\items</Filter>
     </ClCompile>
+    <ClCompile Include="SilverCompass.cpp">
+      <Filter>classes\model\items</Filter>
+    </ClCompile>
+    <ClCompile Include="ChamberWeight.cpp">
+      <Filter>classes\model\items</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainView.h">
@@ -217,6 +223,9 @@
       <Filter>headers\model\items</Filter>
     </ClInclude>
     <ClInclude Include="HandGrenade.h">
+      <Filter>headers\model\items</Filter>
+    </ClInclude>
+    <ClInclude Include="ChamberWeight.h">
       <Filter>headers\model\items</Filter>
     </ClInclude>
   </ItemGroup>
