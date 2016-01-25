@@ -20,7 +20,6 @@ string BossChamber::GetMapIcon(){
 string BossChamber::GetMapIconCheatmode(){
 	return "B";
 }
-
 std::string BossChamber::Save(int x, int y, int z){
 	//	int z = level->GetDepth();
 	bool n = (north);

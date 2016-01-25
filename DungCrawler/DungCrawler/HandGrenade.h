@@ -22,5 +22,5 @@ public:
 
 private:
 	std::map<pair<Chamber*, Direction>, Chamber*>* GetMinimumSpanningTree(Chamber* startChamber);
-	void MakeDirectionsInaccessible(std::map<pair<Chamber*, Direction>, Chamber*>* minimumSpanningTree, Chamber* startChamber);
+	bool MakeDirectionsInaccessible(std::map<pair<Chamber*, Direction>, Chamber*>* minimumSpanningTree, Chamber* startChamber);
 };

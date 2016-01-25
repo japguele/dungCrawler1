@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "SeeCommand.h"
 
-enum actions { backpack, self, map, chamber, cheatmap, spanningtree };
+enum actions { backpack, self, map, chamber, cheatmap, healthmap, spanningtree };
 
 SeeCommand::SeeCommand()
 {
@@ -17,6 +17,7 @@ actions hashit(string const& inString) {
 	if (inString == "map") return map;
 	if (inString == "chamber") return chamber;
 	if (inString == "cheatmap") return cheatmap;
+	if (inString == "healthmap") return healthmap;
 	if (inString == "spanningtree") return spanningtree;
 }
 
@@ -38,6 +39,13 @@ void SeeCommand::Execute(string command){
 		case cheatmap:
 			cheatmode = true;
 			printMap();
+			cheatmode = false;
+			break;
+		case healthmap:
+			healthmode = true;
+			cheatmode = true;
+			printMap();
+			healthmode = false;
 			cheatmode = false;
 			break;
 		case spanningtree:
@@ -103,9 +111,13 @@ void SeeCommand::PrintTopLine(Chamber* chamber){
 			if (spanningTreeMode) {
 				cout << "[" << chamber->GetMapIconSpanMode() << "]";
 			}
+			else if (healthmode){
+				cout << "[" << chamber->GetMapIconHealthmode() << "]";
+			}
 			else if (cheatmode){
 				cout << "[" << chamber->GetMapIconCheatmode() << "]";
 			}
+			
 			else {
 				cout << "["<<chamber->GetMapIcon()<<"]";
 			}
@@ -123,7 +135,7 @@ void SeeCommand::PrintTopLine(Chamber* chamber){
 		}
 		else {
 			if (chamber->GetChamberInDirection(Direction::East)){
-				if (!chamber->GetExits().at(1))
+				if (!chamber->GetExits().at(3))
 					cout << "-";
 				else
 					cout << "/";
@@ -153,7 +165,7 @@ void SeeCommand::PrintTopHallwayLine(Chamber* chamber){
 		}
 		else {
 			if (chamber->GetChamberInDirection(Direction::South)){
-				if (!chamber->GetExits().at(0))
+				if (!chamber->GetExits().at(1))
 					cout << " |  ";
 				else
 					cout << " /  ";
