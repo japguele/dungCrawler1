@@ -6,6 +6,7 @@ class SeeCommand :
 {
 private:
 	bool cheatmode = false;
+	bool healthmode = false;
 	bool spanningTreeMode = false;
 public:
 	SeeCommand();

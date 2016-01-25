@@ -12,6 +12,7 @@ class Chamber
 public:
 	virtual std::string GetMapIcon();
 	virtual std::string GetMapIconCheatmode();
+	virtual std::string GetMapIconHealthmode();
 	virtual std::string GetMapIconSpanMode();
 	Chamber(Level*,int,int,std::string,Enemy*,Trap*);
 	virtual ~Chamber();

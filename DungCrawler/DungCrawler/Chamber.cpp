@@ -43,6 +43,17 @@ string Chamber::GetMapIconCheatmode(){
 		return "O";
 	}
 }
+string Chamber::GetMapIconHealthmode(){
+	if (trap != nullptr){
+		return "T";
+	}
+	else if (enemy != nullptr){
+		return to_string(enemy->GetHealth());
+	}
+	else {
+		return "O";
+	}
+}
 string Chamber::GetMapIcon(){
 	if (visited && trap != nullptr){
 		return "T";
