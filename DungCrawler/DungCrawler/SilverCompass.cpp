@@ -79,8 +79,10 @@ void SilverCompass::UseItem(Hero* hero) {
 			currentChamber = currentChamber->GetChamberInDirection(previous.find(currentChamber)->second);
 		}
 
-		for (Direction direction : reverseDirectionList) {
-			directionList.push_back(GetOppositeDirection(direction));
+		auto rit = reverseDirectionList.rbegin();
+
+		for (int x = reverseDirectionList.size() - 1; x >= 0; x--){
+			directionList.push_back(GetOppositeDirection(reverseDirectionList.at(x)));
 		}
 		
 		//just in case
@@ -119,9 +121,9 @@ void SilverCompass::UseItem(Hero* hero) {
 			}
 		}
 		std::cout << std::endl;
-		std::cout << "Enemies";
+		std::cout << "Enemies: ";
 		for (auto hp : enemyHPList) {
-			std::cout << "Enemy: " << hp << "HP";
+			std::cout << "Enemy - " << hp << "HP - ";
 		}
 		std::cout << std::endl;
 
