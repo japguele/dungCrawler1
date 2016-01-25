@@ -28,14 +28,12 @@ void HandGrenade::UseItem(Hero* hero) {
 std::map<pair<Chamber*, Direction>, Chamber*>* HandGrenade::GetMinimumSpanningTree(Chamber* startChamber) {
 	//set node/vertex in tree
 	std::map<pair<Chamber*, Direction>, Chamber*>* minimumSpanningTree = new std::map<pair<Chamber*, Direction>, Chamber*>();
-	std::vector<Chamber*> nodeList = std::vector<Chamber*>();
+	std::unordered_set<Chamber*> visited = std::unordered_set<Chamber*>();
+	std::map<pair<Chamber*, Direction>, Chamber*> notVisitedYet = std::map<pair<Chamber*, Direction>, Chamber*>();
 
-	nodeList.push_back(startChamber); //starting node
-
-	std::pair<std::pair<Chamber*, Direction>, Chamber*> pair = std::pair<std::pair<Chamber*, Direction>, Chamber*>();
-	std::pair<Chamber*, Direction> chamberDirPair = std::pair<Chamber*, Direction>();
-	std::map<std::pair<Chamber*, Direction>, Chamber*> nodesAndEdgesToChooseFrom = std::map<std::pair<Chamber*, Direction>, Chamber*>();
-	std::map<std::pair<Chamber*, Direction>, Chamber*> blockNodesAndEdges = std::map<std::pair<Chamber*, Direction>, Chamber*>();
+	//starting chamber
+	visited.insert(startChamber); //starting node
+	Chamber* currentChamber = startChamber;
 
 	//setting up directionVector
 	std::vector<Direction> directionVector = std::vector<Direction>();
@@ -46,66 +44,175 @@ std::map<pair<Chamber*, Direction>, Chamber*>* HandGrenade::GetMinimumSpanningTr
 
 	bool keepLooping = true;
 
-	//loop until we have a minimum spanning tree
+	//keep looping until we have all chambers
+
 	while (keepLooping) {
-		for (auto currentNode : nodeList) {
-			for (auto direction : directionVector) { //adjacent nodes
-				if (currentNode->GetChamberInDirection(direction)) { //if adjacent node exists
-					if (std::find(nodeList.begin(), nodeList.end(), currentNode->GetChamberInDirection(direction)) == nodeList.end()) { //if the adjacent node is not already in the nodeList
-						chamberDirPair.first = currentNode;
-						chamberDirPair.second = direction;
+		//examine all chambers adjacent to currentChamber
+		for (auto direction : directionVector) {
+			
+			//except chambers that do not exist and those that are already visited
+			if (currentChamber->GetChamberInDirection(direction) && visited.find(currentChamber->GetChamberInDirection(direction)) == visited.end()) {
+				//this adjacent chamber goes in the notVisitedYet set
+				notVisitedYet.insert(make_pair(make_pair(currentChamber, direction), currentChamber->GetChamberInDirection(direction)));
 
-						pair.first = chamberDirPair; //key
-						pair.second = currentNode->GetChamberInDirection(direction); //value
+				// [currentChamber, direction] = key,										FROM
+				// [currentChamber->GetChamberInDirection(direction)] = value,				TO
+			}
+		}
 
-						if (nodesAndEdgesToChooseFrom.find(chamberDirPair) == nodesAndEdgesToChooseFrom.end() //if not already in the nodesAndEdges map
-									&& blockNodesAndEdges.find(chamberDirPair) == blockNodesAndEdges.end()) { //and the blockNodesAndEdges map
-							nodesAndEdgesToChooseFrom.insert(pair);
-						}
+		int weightCurrentPair = 10;
 
-					}
+		pair<pair<Chamber*, Direction>, Chamber*> currentPair;
+
+		bool toEraseStuff = false;
+		std::map<pair<Chamber*, Direction>, Chamber*> erasing = std::map<pair<Chamber*, Direction>, Chamber*>();
+		//choose smallest edge / least weight
+		//from the notVisitedYet set
+		for (auto notVisitedPair : notVisitedYet) {
+			//except those that are visited, important
+			if (visited.find(notVisitedPair.second) != visited.end()) {
+				toEraseStuff = true;
+				erasing.insert(notVisitedPair);
+			}
+
+			else {
+				int weightLoopPair = 0;
+
+				if (notVisitedPair.second->GetEnemy())
+					weightLoopPair++;
+				if (notVisitedPair.second->GetTrap())
+					weightLoopPair++;
+
+				if (weightLoopPair < weightCurrentPair) {
+					currentPair = notVisitedPair;
+					weightCurrentPair = weightLoopPair;
 				}
 			}
 		}
 
-		if (nodesAndEdgesToChooseFrom.empty()) {
-			keepLooping = false;
-			break;
-		}
-
-		pair.first = nodesAndEdgesToChooseFrom.begin()->first;
-		pair.second = nodesAndEdgesToChooseFrom.begin()->second;
-
-		int weightCurrentPair = 10;
-
-		//check lowest weight node/edge
-		for (auto currentPair : nodesAndEdgesToChooseFrom) {
-			int weightLoopPair = 0;
-
-			if (pair.second->GetEnemy())
-				weightLoopPair++;
-			if (pair.second->GetTrap())
-				weightLoopPair++;
-
-			if (weightLoopPair < weightCurrentPair) {
-				pair = currentPair;
-				weightCurrentPair = weightLoopPair;
+		if (toEraseStuff) {
+			for (auto erase : erasing) {
+				notVisitedYet.erase(erase.first);
 			}
 		}
 
-		//set lowest weight node
-		nodeList.push_back(pair.second);
-		nodesAndEdgesToChooseFrom.erase(pair.first);
-		blockNodesAndEdges.insert(pair);
-		minimumSpanningTree->insert(pair);
+		if (currentPair.second) {
+			//add the chamber to the visited set 
+			visited.insert(currentPair.second);
+			//and add to the minimum spanning tree 
+			minimumSpanningTree->insert(currentPair);
+			//and remove from the notVisitedYet set
+			notVisitedYet.erase(currentPair.first);
+			//and set the currentChamber
+			currentChamber = currentPair.second;
 
-		pair.first.first->spanningTree = true;
-		pair.second->spanningTree = true;
+			currentPair.first.first->spanningTree = true;
+			currentPair.second->spanningTree = true;
+		}
 
-		//repeat adding node/edge
+		if (notVisitedYet.empty()) { //no more chambers left, minimum spanning tree is finished
+			keepLooping = false;
+		}
+
+		//rinse & repeato unless keepLooping = false
 	}
 
+	
 	return minimumSpanningTree;
+
+
+
+
+
+
+
+
+
+
+
+
+
+	//std::pair<std::pair<Chamber*, Direction>, Chamber*> pair = std::pair<std::pair<Chamber*, Direction>, Chamber*>();
+	//std::pair<Chamber*, Direction> chamberDirPair = std::pair<Chamber*, Direction>();
+	//std::map<std::pair<Chamber*, Direction>, Chamber*> nodesAndEdgesToChooseFrom = std::map<std::pair<Chamber*, Direction>, Chamber*>();
+	//std::map<std::pair<Chamber*, Direction>, Chamber*> blockNodesAndEdges = std::map<std::pair<Chamber*, Direction>, Chamber*>();
+
+	////setting up directionVector
+	//std::vector<Direction> directionVector = std::vector<Direction>();
+	//directionVector.push_back(Direction::North);
+	//directionVector.push_back(Direction::East);
+	//directionVector.push_back(Direction::South);
+	//directionVector.push_back(Direction::West);
+
+	//bool keepLooping = true;
+
+	////Associate with each chamber of the graph a weight
+
+	////Initialize an empty minimumSpanningTree
+
+	////All the other chambers that have to be added
+
+
+	////loop until we have a minimum spanning tree
+	//while (keepLooping) {
+	//	for (auto currentNode : nodeList) {
+	//		for (auto direction : directionVector) { //adjacent nodes
+	//			if (currentNode->GetChamberInDirection(direction)) { //if adjacent node exists
+	//				if (std::find(nodeList.begin(), nodeList.end(), currentNode->GetChamberInDirection(direction)) == nodeList.end()) { //if the adjacent node is not already in the nodeList
+	//					chamberDirPair.first = currentNode;
+	//					chamberDirPair.second = direction;
+
+	//					pair.first = chamberDirPair; //key
+	//					pair.second = currentNode->GetChamberInDirection(direction); //value
+
+	//					if (nodesAndEdgesToChooseFrom.find(chamberDirPair) == nodesAndEdgesToChooseFrom.end() //if not already in the nodesAndEdges map
+	//								&& blockNodesAndEdges.find(chamberDirPair) == blockNodesAndEdges.end()) { //and the blockNodesAndEdges map
+	//						nodesAndEdgesToChooseFrom.insert(pair);
+	//					}
+
+	//				}
+	//			}
+	//		}
+	//	}
+
+	//	if (nodesAndEdgesToChooseFrom.empty()) {
+	//		keepLooping = false;
+	//		break;
+	//	}
+
+	//	pair.first = nodesAndEdgesToChooseFrom.begin()->first;
+	//	pair.second = nodesAndEdgesToChooseFrom.begin()->second;
+
+	//	int weightCurrentPair = 10;
+
+	//	//check lowest weight node/edge
+	//	for (auto currentPair : nodesAndEdgesToChooseFrom) {
+	//		int weightLoopPair = 0;
+
+	//		if (pair.second->GetEnemy())
+	//			weightLoopPair++;
+	//		if (pair.second->GetTrap())
+	//			weightLoopPair++;
+
+	//		if (weightLoopPair < weightCurrentPair) {
+	//			pair = currentPair;
+	//			weightCurrentPair = weightLoopPair;
+	//		}
+	//	}
+
+	//	//set lowest weight node
+	//	nodeList.push_back(pair.second);
+	//	nodesAndEdgesToChooseFrom.erase(pair.first);
+	//	blockNodesAndEdges.insert(pair);
+	//	minimumSpanningTree->insert(pair);
+
+	//	pair.first.first->spanningTree = true;
+	//	pair.second->spanningTree = true;
+
+	//	//repeat adding node/edge
+	//}
+
+	
 }
 
 void HandGrenade::MakeDirectionsInaccessible(std::map<pair<Chamber*, Direction>, Chamber*>* minimumSpanningTree, Chamber* startChamber) {
@@ -136,7 +243,7 @@ void HandGrenade::MakeDirectionsInaccessible(std::map<pair<Chamber*, Direction>,
 	std::map<Chamber*, Direction> removeChambers = std::map<Chamber*, Direction>();
 
 	//keep looping until everything is dead
-	while (amount <= range) {
+	while (!queue.empty()) {
 		Chamber* chamber = queue.front(); //get first element
 		visited.insert(chamber); //enqueue / push
 
@@ -158,18 +265,18 @@ void HandGrenade::MakeDirectionsInaccessible(std::map<pair<Chamber*, Direction>,
 			}
 		}
 		queue.pop_front(); //dequeue / pop
-
-		if (!queue.empty()) {
-			break;
-		}
 	}
 
-	if (amount > range) {
+	/*if (amount > range) {
 		for (auto removeChamberPair : removeChambers) {
 			removeChamberPair.first->SetInAccessibleDirection(removeChamberPair.second);
 		}
 	}
 	else {
 		std::cout << "It's too dangerous to use the Hand Grenade" << std::endl;
+	}*/
+
+	for (auto removeChamberPair : removeChambers) { //testing purposes
+		removeChamberPair.first->SetInAccessibleDirection(removeChamberPair.second);
 	}
 }
