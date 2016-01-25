@@ -3,6 +3,11 @@
 #include "Item.h"
 
 #include "ChamberWeight.h"
+#include "Hero.h"
+
+#include <iostream>
+#include <deque>
+#include <unordered_set>
 
 using namespace std;
 

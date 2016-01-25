@@ -205,3 +205,14 @@ Chamber::~Chamber()
 	delete east;
 	delete west;*/
 }
+
+int Chamber::GetWeight() {
+	int x = 1;
+	if (enemy != nullptr){
+		x = x + 10;
+	}
+	if (trap != nullptr){
+		x = x + 2;
+	}
+	return x;
+}

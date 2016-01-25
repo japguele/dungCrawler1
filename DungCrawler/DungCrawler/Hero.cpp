@@ -3,6 +3,7 @@
 #include "potion.h"
 #include "Talisman.h"
 #include "HandGrenade.h"
+#include "SilverCompass.h"
 
 Hero::Hero(){
 
@@ -40,7 +41,7 @@ Hero::Hero(string n)
 	backpack.push_back(talisman);
 	HandGrenade* handGrenade = new HandGrenade("handgrenade", "Destroy everything");
 	backpack.push_back(handGrenade);
-
+	SilverCompass* silverCompass = new SilverCompass("silvercompass", "Find best path");
 }
 void Hero::AddItem(Item* item){
 	backpack.push_back(item);

@@ -43,6 +43,8 @@ public:
 	void DefeatEnemy();
 
 	bool spanningTree = false;
+
+	virtual int GetWeight();
 protected:
 	Enemy* enemy;
 	int xpos;

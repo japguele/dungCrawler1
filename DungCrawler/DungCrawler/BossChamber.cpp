@@ -48,3 +48,7 @@ std::string BossChamber::Save(int x, int y, int z){
 BossChamber::~BossChamber()
 {
 }
+
+int BossChamber::GetWeight() {
+	return 80;
+}
