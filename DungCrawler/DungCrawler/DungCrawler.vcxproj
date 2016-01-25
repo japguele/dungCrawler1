@@ -83,6 +83,7 @@
     <ClInclude Include="BossChamber.h" />
     <ClInclude Include="Chamber.h" />
     <ClInclude Include="ChamberFactory.h" />
+    <ClInclude Include="ChamberWeight.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="CommandFactory.h" />
     <ClInclude Include="Direction.h" />
@@ -123,6 +124,7 @@
     <ClCompile Include="BossChamber.cpp" />
     <ClCompile Include="Chamber.cpp" />
     <ClCompile Include="ChamberFactory.cpp" />
+    <ClCompile Include="ChamberWeight.cpp" />
     <ClCompile Include="Command.cpp" />
     <ClCompile Include="CommandFactory.cpp" />
     <ClCompile Include="DungCrawler.cpp" />
@@ -145,6 +147,7 @@
     <ClCompile Include="QuitCommand.cpp" />
     <ClCompile Include="SaveCommand.cpp" />
     <ClCompile Include="SeeCommand.cpp" />
+    <ClCompile Include="SilverCompass.cpp" />
     <ClCompile Include="SpikeTrap.cpp" />
     <ClCompile Include="Stair.cpp" />
     <ClCompile Include="StartCommand.cpp" />
