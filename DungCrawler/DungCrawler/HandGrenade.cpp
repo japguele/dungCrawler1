@@ -22,7 +22,8 @@ void HandGrenade::UseItem(Hero* hero) {
 
 
 	std::cout << "You feel the walls shake \n";
-
+	hero->GetChamber()->GetEnemy()->TakeDamage(9001);
+	hero->GainExp(100);
 	
 }
 
