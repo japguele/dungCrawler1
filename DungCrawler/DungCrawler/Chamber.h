@@ -12,6 +12,7 @@ class Chamber
 public:
 	virtual std::string GetMapIcon();
 	virtual std::string GetMapIconCheatmode();
+	virtual std::string GetMapIconSpanMode();
 	Chamber(Level*,int,int,std::string,Enemy*,Trap*);
 	virtual ~Chamber();
 	virtual void SetChamberInDirection(Chamber*, Direction);
@@ -30,6 +31,7 @@ public:
 	std::array<bool, 4> GetExits();
 	virtual std::string Save(int x, int y, int z);
 	Level* level;
+	void SetInAccessibleDirection(Direction);
 	Chamber* north;
 	Chamber* east;
 	Chamber* west;
@@ -39,6 +41,8 @@ public:
 	void SetVisited();
 	Trap* GetTrap();
 	void DefeatEnemy();
+
+	bool spanningTree = false;
 protected:
 	Enemy* enemy;
 	int xpos;

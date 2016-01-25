@@ -57,6 +57,14 @@ string Chamber::GetMapIcon(){
 		return " ";
 	}
 }
+string Chamber::GetMapIconSpanMode(){
+	if (spanningTree) {
+		return "O";
+	}
+	else {
+		return " ";
+	}
+}
 Chamber* Chamber::GetChamberInDirection(Direction dir){
 	switch (dir)
 	{
@@ -105,38 +113,59 @@ std::string Chamber::Save(int x,int y,int z){
 
 }
 
+void Chamber::SetInAccessibleDirection(Direction direction) {
+	switch (direction) {
+		case Direction::North:
+			exits[0] = true;
+			this->north->exits[2] = true;
+			break;
+		case Direction::South:
+			exits[2] = true;
+			this->south->exits[0] = true;
+			break;
+		case Direction::West:
+			exits[3] = true;
+			this->west->exits[1] = true;
+			break;
+		case Direction::East:
+			exits[1] = true;
+			this->east->exits[3] = true;
+			break;
+	}
+}
+
 void Chamber::SetChamberInDirection(Chamber* cham, Direction dir){
 
 
 	if (cham){
 	switch (dir)
 	{
-	case Direction::North:
-		north = cham;
-		cham->south = this;
-		exits[0] = true;
-		//cham->south->exits[2] = true;
-		break;
-	case Direction::South:
-		south = cham;
-		cham->north = this;
-		exits[2] = true;
-		//cham->north->exits[0] = true;
-		break;
-	case Direction::West:
-		west = cham;
-		cham->east = this;
-		exits[3] = true;
-		//cham->east->exits[1] = true;
-		break;
-	case Direction::East:
-		east = cham;
-		cham->west = this;
-		exits[1] = true;
-		//cham->west->exits[3] = true;
-		break;
-	default:
-		break;
+		case Direction::North:
+			north = cham;
+			cham->south = this;
+			//exits[0] = true;
+			//cham->south->exits[2] = true;
+			break;
+		case Direction::South:
+			south = cham;
+			cham->north = this;
+			//exits[2] = true;
+			//cham->north->exits[0] = true;
+			break;
+		case Direction::West:
+			west = cham;
+			cham->east = this;
+			//exits[3] = true;
+			//cham->east->exits[1] = true;
+			break;
+		case Direction::East:
+			east = cham;
+			cham->west = this;
+			//exits[1] = true;
+			//cham->west->exits[3] = true;
+			break;
+		default:
+			break;
 	}
 }
 }

@@ -60,22 +60,22 @@ void Stair::SetChamberInDirection(Chamber* cham,Direction dir){
 	case Direction::North:
 		north = cham;
 		cham->south = this;
-		exits[0] = true;
+		//exits[0] = true;
 		break;
 	case Direction::South:
 		south = cham;
 		cham->north = this;
-		exits[2] = true;
+		//exits[2] = true;
 		break;
 	case Direction::West:
 		west = cham;
 		cham->east = this;
-		exits[3] = true;
+		//exits[3] = true;
 		break;
 	case Direction::East:
 		east = cham;
 		cham->west = this;
-		exits[1] = true;
+		//exits[1] = true;
 		break;
 	case Direction::Up:
 		up = cham;

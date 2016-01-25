@@ -2,6 +2,8 @@
 #include "Hero.h"
 #include "potion.h"
 #include "Talisman.h"
+#include "HandGrenade.h"
+
 Hero::Hero(){
 
 }
@@ -36,6 +38,9 @@ Hero::Hero(string n)
 	//added for algorithummmmss
 	Talisman* talisman = new Talisman("talisman", "Find stairs");
 	backpack.push_back(talisman);
+	HandGrenade* handGrenade = new HandGrenade("handgrenade", "Destroy everything");
+	backpack.push_back(handGrenade);
+
 }
 void Hero::AddItem(Item* item){
 	backpack.push_back(item);

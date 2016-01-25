@@ -6,6 +6,7 @@ class SeeCommand :
 {
 private:
 	bool cheatmode = false;
+	bool spanningTreeMode = false;
 public:
 	SeeCommand();
 	virtual void Execute(string);

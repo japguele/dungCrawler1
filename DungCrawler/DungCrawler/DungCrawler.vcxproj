@@ -131,6 +131,7 @@
     <ClCompile Include="EnemyFactory.cpp" />
     <ClCompile Include="FightCommand.cpp" />
     <ClCompile Include="GoCommand.cpp" />
+    <ClCompile Include="HandGrenade.cpp" />
     <ClCompile Include="HelpCommand.cpp" />
     <ClCompile Include="Hero.cpp" />
     <ClCompile Include="InputHandler.cpp" />

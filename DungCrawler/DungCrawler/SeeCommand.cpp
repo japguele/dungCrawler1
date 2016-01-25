@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "SeeCommand.h"
 
-enum actions { backpack, self, map, chamber, cheatmap };
+enum actions { backpack, self, map, chamber, cheatmap, spanningtree };
 
 SeeCommand::SeeCommand()
 {
@@ -17,6 +17,7 @@ actions hashit(string const& inString) {
 	if (inString == "map") return map;
 	if (inString == "chamber") return chamber;
 	if (inString == "cheatmap") return cheatmap;
+	if (inString == "spanningtree") return spanningtree;
 }
 
 void SeeCommand::Execute(string command){
@@ -38,6 +39,13 @@ void SeeCommand::Execute(string command){
 			cheatmode = true;
 			printMap();
 			cheatmode = false;
+			break;
+		case spanningtree:
+			spanningTreeMode = true;
+			cheatmode = true;
+			printMap();
+			cheatmode = false;
+			spanningTreeMode = false;
 			break;
 		default:
 			cout << "That is no valid action, please use: backpack/self/map/chamber";
@@ -92,7 +100,10 @@ void SeeCommand::PrintTopLine(Chamber* chamber){
 			cout << "[X]";
 		}
 		else {
-			if (cheatmode){
+			if (spanningTreeMode) {
+				cout << "[" << chamber->GetMapIconSpanMode() << "]";
+			}
+			else if (cheatmode){
 				cout << "[" << chamber->GetMapIconCheatmode() << "]";
 			}
 			else {
@@ -100,8 +111,11 @@ void SeeCommand::PrintTopLine(Chamber* chamber){
 			}
 		}
 		if (!cheatmode){
-			if (chamber->GetChamberInDirection(Direction::East) && chamber->GetChamberInDirection(Direction::East)->GetVisited()){
-				cout << "-";
+			if (chamber->GetChamberInDirection(Direction::East) && chamber->GetChamberInDirection(Direction::East)->GetVisited()) {
+				if (!chamber->GetExits().at(1))
+					cout << "-";
+				else
+					cout << "/";
 			}
 			else {
 				cout << " ";
@@ -109,7 +123,10 @@ void SeeCommand::PrintTopLine(Chamber* chamber){
 		}
 		else {
 			if (chamber->GetChamberInDirection(Direction::East)){
-				cout << "-";
+				if (!chamber->GetExits().at(1))
+					cout << "-";
+				else
+					cout << "/";
 			}
 			else {
 				cout << " ";
@@ -125,7 +142,10 @@ void SeeCommand::PrintTopHallwayLine(Chamber* chamber){
 	if (chamber != nullptr){
 		if (!cheatmode){
 			if (chamber->GetChamberInDirection(Direction::South) && chamber->GetChamberInDirection(Direction::South)->GetVisited()){
-				cout << " |  ";
+				if (!chamber->GetExits().at(0))
+					cout << " |  ";
+				else
+					cout << " /  ";
 			}
 			else {
 				cout << "    ";
@@ -133,7 +153,10 @@ void SeeCommand::PrintTopHallwayLine(Chamber* chamber){
 		}
 		else {
 			if (chamber->GetChamberInDirection(Direction::South)){
-				cout << " |  ";
+				if (!chamber->GetExits().at(0))
+					cout << " |  ";
+				else
+					cout << " /  ";
 			}
 			else {
 				cout << "    ";

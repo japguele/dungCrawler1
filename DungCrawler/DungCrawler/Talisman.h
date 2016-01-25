@@ -4,7 +4,6 @@
 #include "Item.h"
 #include "Hero.h"
 
-#include <string.h>
 #include <iostream>
 #include <list>
 #include <deque>
